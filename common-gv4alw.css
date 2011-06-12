@@ -1,0 +1,392 @@
+/***** Roundcube|Mail basic styles *****/
+
+body
+{
+  background-color: #E4F2F5; /* #EBEBEB; */
+}
+
+#compose
+{
+  margin: 8px;
+  background-color: #F6F6F6; /* #EBEBEB; */
+  color: #000000;
+}
+
+body.iframe
+{
+  margin: 0px;
+  border: 10px solid #DFDDD5;
+  width: auto;
+}
+
+body, td, th, div, p, h3, select, input, textarea
+{
+  font-family: Tahoma, "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+  color: #000000;
+}
+
+input[type="text"],
+input[type="button"],
+input[type="password"],
+textarea
+{
+  padding: 1px;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+input, textarea
+{
+  color: #333333;
+  padding: 1px 3px;
+  font-size: 9pt;
+  background-color: #ffffff;
+  border: 1px solid #666666;
+}
+
+/** common user interface objects */
+
+#mainscreen
+{
+  top: 60px;
+  right: 10px;
+  left: 10px;
+}
+
+/*** taskbar ***/
+
+#taskbar
+{
+  background: none;
+}
+
+#taskbardate
+{
+  position: absolute;
+  top: 6px;
+  right: 150px;
+  height: 17px;
+  z-index: 200;
+  font-family: Tahoma,Arial,"nimbus sans l",sans-serif;
+  font-size: 13px !important;
+  text-align: right;
+  color: #FFFFFF;
+  vertical-align: top;
+}
+
+#taskbardateend
+{
+  position: absolute;
+  left: 100px;
+  right: 100px;
+  top: -14px;
+  text-align: center;
+}
+
+#logout
+{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  height: 20px;
+  color: #FFFFFF;
+  background-color: #436B9E;
+  padding: 4px 0px 3px 0px;
+  font-family: Tahoma,Arial,"nimbus sans l",sans-serif;
+  text-align: right;
+  white-space: nowrap;
+  z-index: 2;
+  /* css hack for IE */
+  width: expression((parseInt(document.documentElement.clientWidth)-4)+'px');
+}
+
+#logout a
+{
+  font-size: 18px;
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 6px 10px 6px 10px;
+}
+
+#logout a:hover
+{
+  color: #B2B4BF;
+}
+
+/*** tabbar ***/
+
+#tabsbar
+{
+  top: 12px;
+  left: 10px;
+  right: 100px;
+  height: 18px;
+  z-index: 1200;
+  border: none;
+}
+
+span.tablink,
+span.tablink-selected
+{
+  width: 102px;
+  height: 18px !important;
+  text-overflow: ellipsis;
+  font-family: Tahoma,arial,"nimbus sans l",sans-serif;
+  font-size: 13px;
+  text-align: center;
+  background: url(images/tab-pas.png);
+  padding-left: 0px;
+  padding-top: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+span.tablink-selected
+{
+  color: #000000;
+  background-position: -104px 0;
+  background: url(images/tab-act.png);
+  cursor: default;
+}
+
+span.tablink a,
+span.tablink-selected a
+{
+  display: block;
+  color: #DEE7EF;
+  text-decoration: none;
+}
+
+span.tablink a:hover
+{
+  position: absolute;
+  top: 0px !important;
+  display: block;
+  padding-left: 0px;
+  padding-top: 4px;
+  height: 18px !important;
+  width: 100px;
+  text-align: center;
+  text-decoration: none;
+  color: #000000;
+  background: url('images/tab_act.png') !important;
+  background-color: #669999;
+}
+
+span.tablink-selected a:hover
+{
+  position: absolute;
+  top: 0px !important;
+  display: block;
+  padding-left: 1px;
+  padding-top: 4px;
+  height: 18px !important;
+  width: 100px;
+  text-align: center;
+  text-decoration: none;
+  color: #000000;
+  background: url('images/tab-act.png') !important;
+  background-color: #669999;
+}
+
+
+span.tablink-selected a
+{
+  color: #000000;
+}
+
+
+#maintoolbar
+{
+  position: absolute;
+  top: -28px;
+  left: 0px;
+  right: 200px;
+  height: 27px;
+  white-space: nowrap;
+/*  z-index: 10;*/
+}
+
+#maintoolbar img
+{
+  vertical-align: top;
+  padding-right: 5px;
+  text-decoration: none;
+}
+
+#maintoolbar a
+{
+  vertical-align: middle;
+  padding: 8px 7px 8px 2px;
+  text-decoration: none;
+  background-color: #E4F2F5 !important;
+}
+
+#maintoolbar a:hover
+{
+  border: 0px;
+  background: url(images/listheader_dark.png);
+}
+
+#maintoolbar a:active
+{
+  border: 0px;
+  background: url(images/listheader_aqua.png);
+}
+
+#message
+{
+  left: 200px;
+  right: 200px;
+}
+
+#message div
+{
+  margin: 0px auto;
+  min-height: 24px;
+}
+
+.boxtitle
+{
+  color: #FFFFFF;
+  background: url(images/listheader2.gif) top left repeat-x #CCC;
+}
+
+.boxlistcontent
+{
+  top: 0px;
+}
+
+.boxlistcontentmessage
+{
+  position: absolute;
+  top: 0px;
+  bottom: 22px;
+  left: 0px;
+  right: 0px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 10px solid #DFDDD5;
+}
+
+.boxsubject
+{
+  background: url(images/listheader2.gif) top left repeat-x #CCC;
+}
+
+.boxfooter
+{
+  background: url(images/listheader2.gif) top left repeat-x #CCC;
+}
+
+.splitter-h
+{
+  cursor: n-resize;
+}
+
+.splitter-v
+{
+  cursor: e-resize;
+}
+
+.dropbutton,
+.dropbutton span
+{
+  height: 32px;
+}
+
+.dropbutton span:hover
+{
+  background-position: -74px 0;
+}
+
+
+/***** common table settings ******/
+
+table.records-table thead tr td
+{
+  color: #FFFFFF;
+  background: url(images/listheader2.gif) top left repeat-x #CCC;
+}
+
+table.records-table tbody tr td
+{
+  font-size: 13px;
+}
+
+table.records-table tr.selected td
+{
+  color: #000000;
+  background-color: #B2B4BF;
+}
+
+
+/***** mac-style quicksearch field *****/
+
+#quicksearchbar
+{
+  top: 31px;
+}
+
+#searchreset
+{
+  top: 6px;
+}
+
+#searchmenulink
+{
+ top: 6px;
+}
+
+#quicksearchbox
+{
+  top: 6px;
+}
+
+
+/***** roundcube webmail pre-defined classes *****/
+
+#rcmKSearchpane ul li.selected
+{
+  background-color: #B2B4BF;
+}
+
+ul.toolbarmenu li a
+{
+  padding: 2px 12px 3px 28px;
+}
+
+
+/** quota indicator */
+
+
+#quota
+{
+  color: #FFFFFF;
+  font-size: 9px;
+  position: absolute;
+  top: 48px;
+  right: 20px;
+  width: 100px;
+  z-index: 202;
+}
+
+#quotaimg
+{
+  position: absolute;
+  top: 13px;
+  right: 6px;
+  z-index: 201;
+}
+
+.quota_text {
+  color: #FFFFFF;
+  border: 1px solid #FFFFFF;
+}
+
+.quota_bg     { background-color: #6584AE; }
+.quota_mid   { background-color: #F5AD3C; }
+.quota_low   { background-color: #FFFF00; }
+.quota_text_mid   { color: #FFFFFF; }
+.quota_text_low   { color: #FFFFFF; }
