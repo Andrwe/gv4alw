@@ -121,21 +121,17 @@ span.tablink-selected
 {
   width: 102px;
   height: 18px !important;
-  text-overflow: ellipsis;
   font-family: Tahoma,arial,"nimbus sans l",sans-serif;
   font-size: 13px;
   text-align: center;
   background: url(images/tab-pas.png);
-  padding-left: 0px;
-  padding-top: 4px;
+  padding: 0 0 4px 0;
   cursor: pointer;
   text-decoration: none;
 }
 
 span.tablink-selected
 {
-  color: #000000;
-  background-position: -104px 0;
   background: url(images/tab-act.png);
   cursor: default;
 }
@@ -146,6 +142,7 @@ span.tablink-selected a
   display: block;
   color: #DEE7EF;
   text-decoration: none;
+  text-align: center;
 }
 
 span.tablink a:hover
@@ -156,32 +153,25 @@ span.tablink a:hover
   margin-left: 0;
   height: 18px;
   width: 102px;
-  text-align: center;
-  color: #000000;
-  background-position: -104px 0;
+  color: #4c5e75;
   background: url('images/tab-act.png');
 }
 
 span.tablink-selected a:hover
 {
   position: absolute;
-  top: 0px !important;
-  display: block;
-  padding-left: 1px;
-  padding-top: 4px;
-  height: 18px !important;
-  width: 100px;
-  text-align: center;
-  text-decoration: none;
-  color: #000000;
-  background: url('images/tab-act.png') !important;
-  background-color: #669999;
+  top: 0px;
+  padding: 4px 0 0 0;
+  height: 18px;
+  width: 102px;
+  color: #4c5e75;
+  background: url('images/tab-act.png');
 }
 
 
 span.tablink-selected a
 {
-  color: #000000;
+  color: #4c5e75;
 }
 
 
