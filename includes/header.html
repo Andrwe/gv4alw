@@ -1,0 +1,33 @@
+<div id="taskbardate">
+<script type="text/javascript">
+  <!--
+    var now = new Date();
+    var days = new Array(
+      '<roundcube:label name="sunday" />',   '<roundcube:label name="monday" />',
+      '<roundcube:label name="tuesday" />',  '<roundcube:label name="wednesday" />',
+      '<roundcube:label name="thursday" />', '<roundcube:label name="friday" />',
+      '<roundcube:label name="saturday" />');
+    var months = new Array(
+      '<roundcube:label name="jan" />','<roundcube:label name="feb" />',
+      '<roundcube:label name="mar" />','<roundcube:label name="apr" />',
+      '<roundcube:label name="may" />','<roundcube:label name="jun" />',
+      '<roundcube:label name="jul" />','<roundcube:label name="aug" />',
+      '<roundcube:label name="sep" />','<roundcube:label name="oct" />',
+      '<roundcube:label name="nov" />','<roundcube:label name="dec" />');
+    var date = ((now.getDate()<10) ? "0" : "")+ now.getDate();
+    function fourdigits(number)	{
+      return (number < 1000) ? number + 1900 : number;}
+    today =  date + " " +
+       months[now.getMonth()] + ", " +
+       (fourdigits(now.getYear())) + " (" + days[now.getDay()] + ")";
+    document.write(today);
+  //-->
+</script>
+</div>
+<roundcube:container name="tabs" id="tabsbar" />
+<roundcube:object name="message" id="message" />
+<roundcube:if condition="env:quota" />
+	<div id="quota">
+		<roundcube:label name="quota" /><br /><roundcube:object name="quotaDisplay" display="image" width="100" height="14" id="quotadisplay" />
+	</div>
+<roundcube:endif />

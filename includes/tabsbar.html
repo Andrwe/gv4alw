@@ -1,0 +1,30 @@
+<div id="tabsbar">
+  <roundcube:if condition="env:task == 'mail'">
+		<span id="mailtab" class="tablink tablink-selected">
+  <roundcube:else />
+		<span id="mailtab" class="tablink">
+  <roundcube:endif />
+  <roundcube:button command="mail" name="email" type="link" label="email" title="email" /></span>
+
+
+
+
+
+
+
+
+
+
+	<span id="settingstabpreferences" class="tablink"><roundcube:button task="settings" command="preferences" type="link" label="preferences" title="editpreferences" /></span>
+	<span id="settingstabfolders" class="tablink"><roundcube:button task="settings" command="folders" type="link" label="folders" title="managefolders" class="tablink" /></span>
+	<span id="settingstabidentities" class="tablink"><roundcube:button task="settings" command="identities" type="link" label="identities" title="manageidentities" class="tablink" /></span>
+	<span id="addressbooktab" class="tablink"><roundcube:button name="addressbook" href="?_task=addressbook" name="addressbook" type="link" label="addressbook" title="addressbook" /></span>
+	<roundcube:container name="tabs" id="tabsbar" />
+  <span id="taskbar" class="tablink"><roundcube:container name="taskbar" id="taskbar" /></span>
+	<script type="text/javascript"> if (window.rcmail) rcmail.add_onload(rcube_init_bar_tabs); </script>
+</div>
+<roundcube:if condition="env:quota" />
+	<div id="quota">
+		<roundcube:label name="quota" /><br /><roundcube:object name="quotaDisplay" display="image" width="100" height="14" id="quotadisplay" />
+	</div>
+<roundcube:endif />
