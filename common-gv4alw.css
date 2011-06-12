@@ -168,7 +168,6 @@ span.tablink-selected a:hover
   background: url('images/tab-act.png');
 }
 
-
 span.tablink-selected a
 {
   color: #4c5e75;
@@ -305,21 +304,32 @@ table.records-table tr.selected td
 #quicksearchbar
 {
   top: 31px;
-}
-
-#searchreset
-{
-  top: 6px;
-}
-
-#searchmenulink
-{
- top: 6px;
+  background: none;
+  border: 2px inset #4c5e75;
+  border-radius: 4px;
 }
 
 #quicksearchbox
 {
-  top: 6px;
+  border-radius: 4px;
+}
+
+#searchreset
+{
+	right: 2px
+}
+
+#searchmenulink
+{
+  right: 162px;
+}
+
+.searchfilter
+{
+  background-color: #4c5e75;
+  color: white;
+  border-radius: 4px;
+  padding-left: 2px;
 }
 
 
