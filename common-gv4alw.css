@@ -2,15 +2,17 @@
 
 body
 {
-  background-color: #E4F2F5; /* #EBEBEB; */
+  background-color: #E4F2F5;
 }
 
-#compose
-{
-  margin: 8px;
-  background-color: #F6F6F6; /* #EBEBEB; */
-  color: #000000;
-}
+/* Move to compose specific css
+*#compose
+*{
+*  margin: 8px;
+*  background-color: #F6F6F6;
+*  color: #000000;
+*}
+*/
 
 body.iframe
 {
@@ -53,11 +55,21 @@ input, textarea
   left: 10px;
 }
 
-/*** taskbar ***/
+/*** tabsbar ***/
 
 #taskbar
 {
   background: none;
+}
+
+#tabsbar
+{
+  top: 12px;
+  left: 10px;
+  right: 100px;
+  height: 18px;
+  z-index: 1200;
+  border: none;
 }
 
 #taskbardate
@@ -67,20 +79,10 @@ input, textarea
   right: 150px;
   height: 17px;
   z-index: 200;
-  font-family: Tahoma,Arial,"nimbus sans l",sans-serif;
   font-size: 13px !important;
   text-align: right;
   color: #FFFFFF;
   vertical-align: top;
-}
-
-#taskbardateend
-{
-  position: absolute;
-  left: 100px;
-  right: 100px;
-  top: -14px;
-  text-align: center;
 }
 
 #logout
@@ -112,18 +114,6 @@ input, textarea
 #logout a:hover
 {
   color: #B2B4BF;
-}
-
-/*** tabbar ***/
-
-#tabsbar
-{
-  top: 12px;
-  left: 10px;
-  right: 100px;
-  height: 18px;
-  z-index: 1200;
-  border: none;
 }
 
 span.tablink,
@@ -161,17 +151,15 @@ span.tablink-selected a
 span.tablink a:hover
 {
   position: absolute;
-  top: 0px !important;
-  display: block;
-  padding-left: 0px;
-  padding-top: 4px;
-  height: 18px !important;
-  width: 100px;
+  top: 0px;
+  padding: 4px 0 0 0;
+  margin-left: 0;
+  height: 18px;
+  width: 102px;
   text-align: center;
-  text-decoration: none;
   color: #000000;
-  background: url('images/tab_act.png') !important;
-  background-color: #669999;
+  background-position: -104px 0;
+  background: url('images/tab-act.png');
 }
 
 span.tablink-selected a:hover
