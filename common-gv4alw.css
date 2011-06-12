@@ -174,6 +174,7 @@ span.tablink-selected a
 }
 
 
+/*
 #maintoolbar
 {
   position: absolute;
@@ -182,7 +183,6 @@ span.tablink-selected a
   right: 200px;
   height: 27px;
   white-space: nowrap;
-/*  z-index: 10;*/
 }
 
 #maintoolbar img
@@ -211,6 +211,7 @@ span.tablink-selected a
   border: 0px;
   background: url(images/listheader_aqua.png);
 }
+*/
 
 #message
 {
@@ -262,16 +263,6 @@ span.tablink-selected a
 }
 
 /* move to specific css
-.dropbutton,
-.dropbutton span
-{
-  height: 32px;
-}
-
-.dropbutton span:hover
-{
-  background-position: -74px 0;
-}
 */
 
 
@@ -328,6 +319,11 @@ table.records-table tr.selected td
   color: white;
   border-radius: 4px;
   padding-left: 2px;
+}
+
+.searchfilter option
+{
+  padding-left: 5px;
 }
 
 
