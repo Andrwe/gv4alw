@@ -224,10 +224,11 @@ span.tablink-selected a
   min-height: 24px;
 }
 
+/*** box styles ***/
+
 .boxtitle
 {
   color: #FFFFFF;
-  background: url(images/listheader2.gif) top left repeat-x #CCC;
 }
 
 .boxlistcontent
@@ -235,6 +236,7 @@ span.tablink-selected a
   top: 0px;
 }
 
+/* move to specific css
 .boxlistcontentmessage
 {
   position: absolute;
@@ -247,15 +249,7 @@ span.tablink-selected a
   border: 10px solid #DFDDD5;
 }
 
-.boxsubject
-{
-  background: url(images/listheader2.gif) top left repeat-x #CCC;
-}
-
-.boxfooter
-{
-  background: url(images/listheader2.gif) top left repeat-x #CCC;
-}
+*/
 
 .splitter-h
 {
@@ -267,6 +261,7 @@ span.tablink-selected a
   cursor: e-resize;
 }
 
+/* move to specific css
 .dropbutton,
 .dropbutton span
 {
@@ -277,10 +272,12 @@ span.tablink-selected a
 {
   background-position: -74px 0;
 }
+*/
 
 
 /***** common table settings ******/
 
+/* move to specific css
 table.records-table thead tr td
 {
   color: #FFFFFF;
@@ -297,6 +294,7 @@ table.records-table tr.selected td
   color: #000000;
   background-color: #B2B4BF;
 }
+*/
 
 
 /***** mac-style quicksearch field *****/
