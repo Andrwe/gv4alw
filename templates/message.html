@@ -16,56 +16,64 @@
 
 <roundcube:include file="/includes/taskbar.html" />
 <roundcube:include file="/includes/header.html" />
-	<roundcube:include file="/includes/messagemenu.html" />
-	<div id="mainscreen">
-		<div id="mailboxlist-container">
-			<div class="boxlistcontent">
-				<ul id="mailboxlistgw"><li id="rcmliID" class="home even"><roundcube:object name="username" /></li></ul>
-				<roundcube:object name="mailboxlist" id="mailboxlist" maxlength="40" />
-			</div>
-			<div class="boxfooter">
-			  <roundcube:button name="mailboxmenulink" id="mailboxmenulink" type="link" title="folderactions" class="button groupactions" onclick="rcmail_ui.show_popup('mailboxmenu');return false" content=" " />
-			</div>
-		</div>
-		<div id="messageframe">
-			<div id="messagetoolbar">
-				<roundcube:button command="list" type="link" class="button back" classAct="button back" classSel="button backSel" title="backtolist" content=" " />
-				<roundcube:button command="compose" type="link" class="button compose" classAct="button compose" classSel="button composeSel" title="writenewmessage" content=" " />
-				<roundcube:button command="reply" type="link" class="buttonPas reply" classAct="button reply" classSel="button replySel" title="replytomessage" content=" " />
-        <span class="dropbutton">
-				<roundcube:button command="reply-all" type="link" class="buttonPas replyAll" classAct="button replyAll" classSel="button replyAllSel" title="replytoallmessage" content=" " />
-        <span id="replyallmenulink" onclick="rcmail_ui.show_popup('replyallmenu');return false"></span></span>
-				<roundcube:button command="forward" type="link" class="buttonPas forward" classAct="button forward" classSel="button forwardSel" title="forwardmessage" content=" " />
-				<roundcube:button command="delete" type="link" class="buttonPas delete" classAct="button delete" classSel="button deleteSel" title="deletemessage" content=" " />
-				<roundcube:container name="toolbar" id="messagetoolbar" />
-				<roundcube:button name="messagemenulink" id="messagemenulink" type="link" class="button messagemenu" title="messageactions" onclick="rcmail_ui.show_popup('messagemenu');return false" content=" " />
-				<roundcube:object name="mailboxlist" type="select" noSelection="moveto" maxlength="40" onchange="rcmail.command('moveto', this.options[this.selectedIndex].value)" class="mboxlist" />
-			</div>
+
+<div id="messagetoolbar">
+<roundcube:button command="list" type="link" class="button back" classAct="button back" classSel="button backSel" title="backtolist" content=" " />
+<roundcube:button command="compose" type="link" class="button compose" classAct="button compose" classSel="button composeSel" title="writenewmessage" content=" " />
+<roundcube:button command="reply" type="link" class="buttonPas reply" classAct="button reply" classSel="button replySel" title="replytomessage" content=" " />
+<span class="dropbutton">
+<roundcube:button command="reply-all" type="link" class="buttonPas replyAll" classAct="button replyAll" classSel="button replyAllSel" title="replytoallmessage" content=" " />
+<span id="replyallmenulink" onclick="rcmail_ui.show_popup('replyallmenu');return false"></span></span>
+<roundcube:button command="forward" type="link" class="buttonPas forward" classAct="button forward" classSel="button forwardSel" title="forwardmessage" content=" " />
+<roundcube:button command="delete" type="link" class="buttonPas delete" classAct="button delete" classSel="button deleteSel" title="deletemessage" content=" " />
+<roundcube:container name="toolbar" id="messagetoolbar" />
+<roundcube:button name="messagemenulink" id="messagemenulink" type="link" class="button messagemenu" title="messageactions" onclick="rcmail_ui.show_popup('messagemenu');return false" content=" " />
+<roundcube:object name="mailboxlist" type="select" noSelection="moveto" maxlength="25" onchange="rcmail.command('moveto', this.options[this.selectedIndex].value)" class="mboxlist" />
+</div>
+
 <roundcube:include file="/includes/replyallmenu.html" />
 <roundcube:include file="/includes/messagemenu.html" />
-			<div class="boxlistcontentmessage" style="top:28px">
-				<roundcube:object name="messageHeaders" class="headers-table" cellspacing="0" cellpadding="2" addicon="/images/icons/silhouette.png" summary="Message headers" />
-				<roundcube:object name="messageAttachments" id="attachment-list" />
 
-				<roundcube:object name="blockedObjects" id="remote-objects-message" />
-				<roundcube:object name="messageBody" id="messagebody" />
-			</div>
-			<div class="boxfooter">
-				<div id="countcontrols" class="pagenav">
-					<roundcube:button command="lastmessage" type="link" class="buttonPas lastpage" classAct="button lastpage" classSel="button lastpageSel" title="lastmessage" content=" " />
-					<roundcube:button command="nextmessage" type="link" class="buttonPas nextpage" classAct="button nextpage" classSel="button nextpageSel" title="nextmessage" content=" " />
-					<roundcube:object name="messageCountDisplay" style="padding:0 .5em; float:right" />
-					<roundcube:button command="previousmessage" type="link" class="buttonPas prevpage" classAct="button prevpage" classSel="button prevpageSel" title="previousmessage" content=" " />
-					<roundcube:button command="firstmessage" type="link" class="buttonPas firstpage" classAct="button firstpage" classSel="button firstpageSel" title="firstmessage" content=" " />
-				</div>
-			</div>
-		</div>
-	</div>
+<div id="mainscreen">
+<div id="mailleftcontainer">
+<div id="mailboxlist-container">
+<div id="mailboxlist-title" class="boxtitle"><roundcube:label name="mailboxlist" /></div>
+<div class="boxlistcontent">
+<roundcube:object name="mailboxlist" id="mailboxlist" maxlength="25" />
+</div>
+<div class="boxfooter">
+  <roundcube:button name="mailboxmenulink" id="mailboxmenulink" type="link" title="folderactions" class="button groupactions" onclick="rcmail_ui.show_popup('mailboxmenu');return false" content=" " />
+</div>
+</div>
+</div>
 
-	<script type="text/javascript">
-		var mailviewsplitv = new rcube_splitter({id:'mailviewsplitterv', p1: 'mailleftcontainer', p2: 'messageframe', orientation: 'v', relative: true, start: 165});
-		rcmail.add_onload('mailviewsplitv.init()');
-	</script>
+<div id="messageframe">
+<div class="boxlistcontent" style="top:0; overflow-x:auto">
+<roundcube:object name="messageHeaders" class="headers-table" cellspacing="0" cellpadding="2" addicon="/images/icons/silhouette.png" summary="Message headers" />
+<roundcube:object name="messageFullHeaders" id="full-headers" />
+<roundcube:object name="messageAttachments" id="attachment-list" />
+
+<roundcube:object name="blockedObjects" id="remote-objects-message" />
+<roundcube:object name="messageBody" id="messagebody" />
+</div>
+<div class="boxfooter">
+<div id="countcontrols" class="pagenav">
+  <roundcube:button command="lastmessage" type="link" class="buttonPas lastpage" classAct="button lastpage" classSel="button lastpageSel" title="lastmessage" content=" " />
+  <roundcube:button command="nextmessage" type="link" class="buttonPas nextpage" classAct="button nextpage" classSel="button nextpageSel" title="nextmessage" content=" " />
+  <roundcube:object name="messageCountDisplay" style="padding:0 .5em; float:right" />
+  <roundcube:button command="previousmessage" type="link" class="buttonPas prevpage" classAct="button prevpage" classSel="button prevpageSel" title="previousmessage" content=" " />
+  <roundcube:button command="firstmessage" type="link" class="buttonPas firstpage" classAct="button firstpage" classSel="button firstpageSel" title="firstmessage" content=" " />
+</div>
+</div>
+</div>
+
+</div>
+
+<script type="text/javascript">
+    var mailviewsplitv = new rcube_splitter({id:'mailviewsplitterv', p1: 'mailboxlist-container', p2: 'messageframe', orientation: 'v', relative: true, start: 165});
+    rcmail.add_onload('mailviewsplitv.init()');
+</script>
+
 <div id="mailboxoptionsmenu" class="popupmenu">
   <ul>
     <li><roundcube:button command="expunge" type="link" label="compact" classAct="active" /></li>
