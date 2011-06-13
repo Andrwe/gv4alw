@@ -7,6 +7,24 @@
   border-top: 1px solid #999;
 }
 
+#partheader
+{
+  top: 45px;
+  left: 240px;
+  color: #FFFFFF;
+  z-index: 250;
+}
+
+#partheader table td
+{
+  color: #FFFFFF;
+}
+
+#partheader table td.title
+{
+  color: #FFFFFF;
+}
+
 #messagetoolbar
 {
   position: relative;
@@ -29,6 +47,12 @@
 }
 
 /*** buttons ***/
+
+#messagemenu li a.active:hover,
+#markmessagemenu li a.active:hover
+{
+  background-color: #B2B4BF;
+}
 
 .dropbutton span:hover
 {
@@ -135,7 +159,8 @@
   background-position: -286px -22px;
 }
 
-#messagetoolbar select
+#messagetoolbar select,
+#compose-headers td select
 {
   font-size: 11px;
   background-color: #4c5e75;
@@ -211,6 +236,7 @@
   font-size: 12px;
   background: url(images/icons/folder-closed.png) 5px 0 no-repeat;
   background-position: 0px 0px;
+  border: none;
 }
 
 #mailboxlist li div
@@ -221,37 +247,38 @@
 #mailboxlist li.inbox
 {
   background-image: url(images/icons/folder-inbox.png);
+  background-position: 0 0;
 }
 
 #mailboxlist li.drafts
 {
   background-image: url(images/icons/folder-drafts.png);
+  background-position: 0 0;
 }
 
 #mailboxlist li.sent
 {
   background-image: url(images/icons/folder-sent.png);
+  background-position: 0 0;
 }
 
 #mailboxlist li.junk
 {
   background-image: url(images/icons/folder-junk.png);
+  background-position: 0 0;
 }
 
 #mailboxlist li.trash
 {
   background-image: url(images/icons/folder-trash.png);
+  background-position: 0 0;
 }
 
 #mailboxlist li a:hover
 {
   color: #333333;
   font-weight: bold;
-}
-
-#mailboxlist li:hover
-{
-  background-color: #E4F2F5;
+  background-color: #B2B4BF;
 }
 
 #mailboxlist li.unread,
@@ -317,14 +344,13 @@ body.messagelist
   cursor: inherit;
 }
 
-#messagelist tbody tr:hover
-{
-  background-color: #E4F2F5;
-}
-
+#messagelist tbody tr:hover,
+#messagelist tbody tr td:hover,
 #messagelist tbody tr td a:hover
 {
+  background-color: #B2B4BF;
   font-weight: bold;
+  color: white;
 }
 
 #messagelist tr td div.collapsed,
@@ -348,13 +374,18 @@ body.messagelist
 
 #messagelist tr.selected td
 {
-  color: #000000;
   background-color: #B2B4BF;
 }
 
 #messagelist tr.selected td a:hover
 {
   font-weight: normal;
+}
+
+#messagelist tr.unfocused td
+{
+  color: #FFFFFF;
+  background-color: #B2B4BF;
 }
 
 /*** message view styles ***/
@@ -421,5 +452,18 @@ div.more-headers
 {
   margin: 0 5px;
   white-space: nowrap;
+}
+
+/** message compose styles */
+
+#compose-body
+{
+  padding: 10px;
+}
+
+#compose-headers td.title,
+#compose-subject td.title
+{
+  z-index: 1;
 }
 
