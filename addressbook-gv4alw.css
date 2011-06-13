@@ -1,0 +1,147 @@
+/***** Roundcube|Mail address book task styles of gv4alw *****/
+
+#abooktoolbar
+{
+  top: 33px;
+  left: 10px;
+  height: 25px;
+  z-index: 2;
+}
+
+#abooktoolbar a.button,
+#abooktoolbar a.buttonPas,
+#abooktoolbar span.separator {
+  width: 25px;
+  height: 25px;
+  margin-right: 0px;
+}
+
+/*** buttons ***/
+
+#abooktoolbar a.addcontactSel {
+  background-position: 0 -22px;
+}
+
+#abooktoolbar a.compose {
+  background-position: -24px 0;
+}
+
+#abooktoolbar a.composeSel {
+  background-position: -24px -22px;
+}
+
+#abooktoolbar a.delete {
+  background-position: -52px 0;
+}
+
+#abooktoolbar a.deleteSel {
+  background-position: -52px -22px;
+}
+
+#abooktoolbar a.import {
+  background-position: -80px 0;
+}
+
+#abooktoolbar a.importSel {
+  background-position: -80px -22px;
+}
+
+#abooktoolbar a.export {
+  background-position: -104px 0;
+}
+
+#abooktoolbar a.exportSel {
+  background-position: -104px -22px;
+}
+
+#abooktoolbar span.separator {
+  width: 10px;
+  background-position: -135px 0;
+}
+
+#addressscreen
+{
+  top: 60px;
+  right: 10px;
+  left: 220px;
+}
+
+#directorylistbox
+{
+  top: 60px;
+  left: 10px;
+  width: 200px;
+}
+
+#directorylist li
+{
+  font-size: 13px;
+  background: url(images/icons/abcard.png) no-repeat;
+  background-position: 2px 3px; 
+}
+
+#directorylist li a:hover
+{
+  font-weight: bold;
+}
+
+#directorylist li.selected
+{
+  background-color: #B2B4BF;
+}
+
+div.boxtitle
+{
+  height: 16px !important;
+  vertical-align: middle;
+  font-size: 14px;
+}
+
+div.boxlistcontent
+{
+  top: 24px;
+}
+
+#contacts-table tbody td
+{
+  font-size: 13px;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  border: none;
+}
+
+#contacts-table tbody tr.even
+{
+  background-color: #F9F9F9;
+}
+
+#contacts-table tbody tr.selected td,
+#contacts-table tbody tr.unfocused td,
+#contacts-table tbody tr td:hover
+{
+  background-color: #B2B4BF;
+  color: white;
+}
+
+div.tabsbar
+{
+  border: none;
+}
+
+div#contact-body
+{
+  position: relative;
+  top: 42px;
+}
+
+fieldset.tabbed
+{
+  margin: 0;
+}
+
+#contact-details input.button
+{
+  position: relative;
+  top: 40px;
+}
+

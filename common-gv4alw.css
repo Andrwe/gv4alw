@@ -5,15 +5,6 @@ body
   background-color: #E4F2F5;
 }
 
-/* Move to compose specific css
-*#compose
-*{
-*  margin: 8px;
-*  background-color: #F6F6F6;
-*  color: #000000;
-*}
-*/
-
 body.iframe
 {
   margin: 0px;
@@ -174,45 +165,6 @@ span.tablink-selected a
 }
 
 
-/*
-#maintoolbar
-{
-  position: absolute;
-  top: -28px;
-  left: 0px;
-  right: 200px;
-  height: 27px;
-  white-space: nowrap;
-}
-
-#maintoolbar img
-{
-  vertical-align: top;
-  padding-right: 5px;
-  text-decoration: none;
-}
-
-#maintoolbar a
-{
-  vertical-align: middle;
-  padding: 8px 7px 8px 2px;
-  text-decoration: none;
-  background-color: #E4F2F5 !important;
-}
-
-#maintoolbar a:hover
-{
-  border: 0px;
-  background: url(images/listheader_dark.png);
-}
-
-#maintoolbar a:active
-{
-  border: 0px;
-  background: url(images/listheader_aqua.png);
-}
-*/
-
 #message
 {
   left: 200px;
@@ -237,21 +189,6 @@ span.tablink-selected a
   top: 0px;
 }
 
-/* move to specific css
-.boxlistcontentmessage
-{
-  position: absolute;
-  top: 0px;
-  bottom: 22px;
-  left: 0px;
-  right: 0px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  border: 10px solid #DFDDD5;
-}
-
-*/
-
 .splitter-h
 {
   cursor: n-resize;
@@ -261,32 +198,6 @@ span.tablink-selected a
 {
   cursor: e-resize;
 }
-
-/* move to specific css
-*/
-
-
-/***** common table settings ******/
-
-/* move to specific css
-table.records-table thead tr td
-{
-  color: #FFFFFF;
-  background: url(images/listheader2.gif) top left repeat-x #CCC;
-}
-
-table.records-table tbody tr td
-{
-  font-size: 13px;
-}
-
-table.records-table tr.selected td
-{
-  color: #000000;
-  background-color: #B2B4BF;
-}
-*/
-
 
 /***** mac-style quicksearch field *****/
 
@@ -339,9 +250,7 @@ ul.toolbarmenu li a
   padding: 2px 12px 3px 28px;
 }
 
-
 /** quota indicator */
-
 
 #quota
 {
