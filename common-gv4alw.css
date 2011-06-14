@@ -317,7 +317,8 @@ table.records-table tbody tr td:hover
   color: white;
 }
 
-table.records-table tbody tr.even
+table.records-table tbody tr.even,
+table.records-table tbody tr:nth-child(even)
 {
   background-color: #F9F9F9;
 }
