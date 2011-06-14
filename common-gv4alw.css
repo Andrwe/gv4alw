@@ -18,6 +18,21 @@ body, td, th, div, p, h3, select, input, textarea
   color: #000000;
 }
 
+select
+{
+  font-size: 11px;
+  background-color: #4c5e75;
+  color: white;
+  border-radius: 4px;
+  padding-left: 2px;
+  top: 0px;
+}
+
+select option
+{
+  padding-left: 15px;
+}
+
 input[type="text"],
 input[type="button"],
 input[type="password"],

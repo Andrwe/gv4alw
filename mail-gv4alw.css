@@ -158,32 +158,6 @@
   background-position: -286px -22px;
 }
 
-#messagetoolbar select,
-#compose-headers td select,
-#composeoptionsmenu select
-{
-  font-size: 11px;
-  background-color: #4c5e75;
-  color: white;
-  border-radius: 4px;
-  padding-left: 2px;
-}
-
-#messagetoolbar select.mboxlist
-{
-  top: 0px;
-}
-
-#messagetoolbar select.mboxlist option
-{
-  padding-left: 15px;
-}
-
-#messagetoolbar select.mboxlist option[value="0"]
-{
-  padding-left: 2px;
-}
-
 /*** Container **/
 #mailcontframe
 {
