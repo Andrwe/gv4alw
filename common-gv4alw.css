@@ -369,3 +369,15 @@ div#identity-details div.tabsbar
   border: none;
 }
 
+/*** plugin styles ***/
+
+div.ui-widget-header
+{
+  background: url(images/listheader.gif) top left repeat-x #CCC;
+  height: 20px;
+  padding: 2px 4px 0 !important;
+  vertical-align: middle;
+  font-size: 14px;
+  color: white;
+}
+
