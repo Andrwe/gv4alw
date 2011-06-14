@@ -90,39 +90,6 @@
   background-color: #B2B4BF;
 }
 
-div.boxtitle
-{
-  height: 16px !important;
-  vertical-align: middle;
-  font-size: 14px;
-}
-
-div.boxlistcontent
-{
-  top: 24px;
-}
-
-#contacts-table tbody td
-{
-  font-size: 13px;
-  text-overflow: ellipsis;
-  -o-text-overflow: ellipsis;
-  border: none;
-}
-
-#contacts-table tbody tr.even
-{
-  background-color: #F9F9F9;
-}
-
-#contacts-table tbody tr.selected td,
-#contacts-table tbody tr.unfocused td,
-#contacts-table tbody tr td:hover
-{
-  background-color: #B2B4BF;
-  color: white;
-}
-
 div.tabsbar
 {
   border: none;

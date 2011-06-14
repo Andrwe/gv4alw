@@ -179,14 +179,18 @@ span.tablink-selected a
 
 /*** box styles ***/
 
-.boxtitle
+div.boxtitle
 {
-  color: #FFFFFF;
+  height: 20px !important;
+  padding: 2px 4px 0;
+  vertical-align: middle;
+  font-size: 14px;
+  color: white;
 }
 
-.boxlistcontent
+div.boxlistcontent
 {
-  top: 0px;
+  top: 23px;
 }
 
 .splitter-h
@@ -281,3 +285,37 @@ ul.toolbarmenu li a
 .quota_low   { background-color: #FFFF00; }
 .quota_text_mid   { color: #FFFFFF; }
 .quota_text_low   { color: #FFFFFF; }
+
+/*** records-table (addressbook, settings, folders) ***/
+
+table.records-table tbody tr.selected td,
+table.records-table tbody tr.unfocused td,
+table.records-table tbody tr td:hover
+{
+  border: none;
+  background-color: #B2B4BF;
+  font-weight: bold;
+  color: white;
+}
+
+table.records-table tbody tr.even
+{
+  background-color: #F9F9F9;
+}
+
+table.records-table tbody td
+{
+  font-size: 13px;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  border: none;
+}
+
+table.records-table thead td
+{
+  height: 22px;
+  font-size: 14px;
+  color: white;
+  vertical-align: middle;
+}
+

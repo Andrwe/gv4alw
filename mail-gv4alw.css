@@ -204,6 +204,11 @@
   background-color: #FFFFFF;
 }
 
+#mailboxlist-container .boxlistcontent
+{
+  top: 0;
+}
+
 #mailboxlistgw
 {
   position:relative;
