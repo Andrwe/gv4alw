@@ -318,7 +318,7 @@ table.records-table tbody tr.even
   background-color: #F9F9F9;
 }
 
-table.records-table tbody td
+table.records-table tbody tr td
 {
   font-size: 13px;
   text-overflow: ellipsis;
@@ -326,7 +326,7 @@ table.records-table tbody td
   border: none;
 }
 
-table.records-table thead td
+table.records-table thead tr td
 {
   height: 22px;
   font-size: 14px;

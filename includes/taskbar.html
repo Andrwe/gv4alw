@@ -11,7 +11,11 @@
   <roundcube:else />
 		<span id="settingstab" class="tablink">
   <roundcube:endif />
+  <roundcube:if condition="env:task == 'settings' && env:action != ''">
+  <roundcube:button task="settings" command="settings" label="settings" class="button-settings" /></span>
+  <roundcube:else />
   <roundcube:button command="settings" label="settings" class="button-settings" /></span>
+  <roundcube:endif />
 
   <roundcube:if condition="env:task == 'addressbook'">
 		<span id="addressbooktab" class="tablink tablink-selected">
@@ -25,14 +29,14 @@
   <roundcube:else />
 		<span id="folderstab" class="tablink">
   <roundcube:endif />
-  <roundcube:button command="folders" label="folders" class="button-folders" /></span>
+  <roundcube:button task="settings" command="folders" label="folders" class="button-folders" /></span>
 
   <roundcube:if condition="env:task == 'settings' && env:action == 'identities'">
 		<span id="identitiestab" class="tablink tablink-selected">
   <roundcube:else />
 		<span id="identitiestab" class="tablink">
   <roundcube:endif />
-  <roundcube:button command="identities" label="identities" class="button-identities" /></span>
+  <roundcube:button task="settings" command="identities" label="identities" class="button-identities" /></span>
 
   <roundcube:container name="taskbar" id="taskbar" />
 
