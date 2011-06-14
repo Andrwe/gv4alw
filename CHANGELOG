@@ -1,6 +1,15 @@
 gv4alw
 Modifications:
 
+v0.3
+======================================================================
+* template rewrite
+* use default css and overwrite with own
+* used as much code of default-template files as possible
+* unify look & feel
+* rc 0.5.3 compatible
+* cleanup of unneeded files
+
 v0.2
 ======================================================================
 * code cleanup
