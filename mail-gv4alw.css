@@ -274,35 +274,37 @@
   background-position: 0 0;
 }
 
-#mailboxlist li a:hover
+#mailboxlist li.selected
 {
-  color: #333333;
-  font-weight: bold;
   background-color: #B2B4BF;
+  font-weight: bold;
 }
 
-#mailboxlist li.unread,
+#mailboxlist li.unread.selected > a
+{
+  color: white;
+}
+
+#mailboxlist li a:hover,
+#mailboxlist li.unread a:hover
+{
+  color: white;
+  font-weight: bold;
+  background-color: #B2B4BF;
+  background-image: inherit;
+  background-repeat: no-repeat;
+  background-position: -10px 0px;
+}
+
 #mailboxlist li.unread > a
 {
   color: #246486;
-}
-
-#mailboxlist li.unread a:hover
-{
-  color: #333333;
 }
 
 #mailboxlist li.droptarget
 {
   background-color: #B2B4BF;
   color: #000000;
-  font-weight: bold;
-}
-
-#mailboxlist li.selected
-{
-  background-color: #B2B4BF;
-  color: #FFF;
   font-weight: bold;
 }
 
@@ -345,8 +347,8 @@ body.messagelist
 }
 
 #messagelist tbody tr:hover,
-#messagelist tbody tr td:hover,
-#messagelist tbody tr td a:hover
+#messagelist tbody tr:hover > td,
+#messagelist tbody tr:hover > td a
 {
   background-color: #B2B4BF;
   font-weight: bold;
