@@ -4,3 +4,27 @@
 {
   padding-bottom: 5px;
 }
+
+#folder-manager.droptarget
+{
+  border: 1px solid #B2B4BF;
+}
+
+#subscription-table tr.selected td
+{
+  background-color: #B2B4BF;
+  color: white;
+}
+
+div#identity-body
+{
+  position: relative;
+  top: 19px;
+}
+
+#identity-details input.button
+{
+  position: relative;
+  top: 19px;
+}
+

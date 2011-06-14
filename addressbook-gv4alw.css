@@ -90,25 +90,3 @@
   background-color: #B2B4BF;
 }
 
-div.tabsbar
-{
-  border: none;
-}
-
-div#contact-body
-{
-  position: relative;
-  top: 42px;
-}
-
-fieldset.tabbed
-{
-  margin: 0;
-}
-
-#contact-details input.button
-{
-  position: relative;
-  top: 40px;
-}
-

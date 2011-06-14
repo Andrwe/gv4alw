@@ -305,6 +305,10 @@ ul.toolbarmenu li a
 
 table.records-table tbody tr.selected td,
 table.records-table tbody tr.unfocused td,
+table.records-table tbody tr:hover,
+table.records-table tbody tr.even:hover,
+table.records-table tbody tr:hover > td,
+table.records-table tbody tr.even:hover > td,
 table.records-table tbody tr td:hover
 {
   border: none;
@@ -332,5 +336,35 @@ table.records-table thead tr td
   font-size: 14px;
   color: white;
   vertical-align: middle;
+}
+
+/*** identities, folders & contacts styles ***/
+
+div#contact-body,
+div#folder-body
+{
+  position: relative;
+  top: 42px;
+}
+
+div#contact-body fieldset.tabbed,
+div#folder-body fieldset.tabbed,
+div#identity-body fieldset.tabbed
+{
+  margin: 0;
+}
+
+#contact-details input.button,
+#folder-details input.button
+{
+  position: relative;
+  top: 40px;
+}
+
+div#contact-details div.tabsbar,
+div#folder-details div.tabsbar,
+div#identity-details div.tabsbar
+{
+  border: none;
 }
 

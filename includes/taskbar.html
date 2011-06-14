@@ -31,7 +31,7 @@
   <roundcube:endif />
   <roundcube:button task="settings" command="folders" label="folders" class="button-folders" /></span>
 
-  <roundcube:if condition="env:task == 'settings' && env:action == 'identities'">
+  <roundcube:if condition="env:task == 'settings' &&  ( env:action == 'identities' || env:action == 'add-identity' || env:action == 'edit-identity' )">
 		<span id="identitiestab" class="tablink tablink-selected">
   <roundcube:else />
 		<span id="identitiestab" class="tablink">
