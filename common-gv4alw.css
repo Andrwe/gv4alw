@@ -179,19 +179,6 @@ span.tablink-selected a
   color: #4c5e75;
 }
 
-
-#message
-{
-  left: 200px;
-  right: 200px;
-}
-
-#message div
-{
-  margin: 0px auto;
-  min-height: 24px;
-}
-
 /*** box styles ***/
 
 div.boxtitle
