@@ -381,3 +381,17 @@ div.ui-widget-header
   color: white;
 }
 
+/** fix for hardcoded img-size of markasjunk-plugin **/
+a[onclick="return rcmail.command('plugin.markasjunk','',this)"] img
+{
+  height: inherit;
+  width: inherit;
+}
+
+/** fix for hardcoded image path to default-skin of enigma-plugin **/
+a[onclick="rcmail_ui.show_popup('enigmamenu', true); return false"] img
+{
+  height: 22px;
+  width: 22px;
+}
+
