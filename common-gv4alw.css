@@ -376,8 +376,9 @@ div.ui-widget-header
   color: white;
 }
 
-/** fix for hardcoded img-size of markasjunk-plugin **/
-a[onclick="return rcmail.command('plugin.markasjunk','',this)"] img
+/** fix for hardcoded img-size of markasjunk- and accounts-plugin **/
+a[onclick="return rcmail.command('plugin.markasjunk','',this)"] img,
+a[onclick="return rcmail.command('plugin.archive','',this)"] img
 {
   height: inherit;
   width: inherit;
