@@ -149,6 +149,7 @@ span.tablink-selected a
   color: #DEE7EF;
   text-decoration: none;
   text-align: center;
+  background: none;
 }
 
 span.tablink a:hover
@@ -270,19 +271,7 @@ ul.toolbarmenu li a
 {
   color: #FFFFFF;
   font-size: 9px;
-  position: absolute;
-  top: 48px;
-  right: 20px;
-  width: 100px;
   z-index: 202;
-}
-
-#quotaimg
-{
-  position: absolute;
-  top: 13px;
-  right: 6px;
-  z-index: 201;
 }
 
 .quota_text {

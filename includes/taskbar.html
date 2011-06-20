@@ -41,11 +41,6 @@
   <roundcube:container name="taskbar" id="taskbar" />
 
 	<script type="text/javascript"> if (window.rcmail) rcmail.add_onload(rcube_init_bar_tabs); </script>
-  <roundcube:if condition="env:quota" />
-  	<span id="quota">
-  		<roundcube:label name="quota" /><br /><roundcube:object name="quotaDisplay" display="image" width="100" height="14" id="quotadisplay" />
-  	</span>
-  <roundcube:endif />
 </div>
 <span id="logout">
 	<roundcube:button command="logout" label="logout" class="button-logout" />
