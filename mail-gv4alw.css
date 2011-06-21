@@ -45,6 +45,11 @@
   opacity: 0.35;
 }
 
+#messagetoolbar select.mboxlist {
+  margin: 0;
+  top: 0;
+}
+
 /*** buttons ***/
 
 #messagemenu li a.active:hover,
