@@ -5,7 +5,7 @@ function rcube_init_plugin_tab()
     tab = '#settingstab' + rcmail.env.action.replace(/\./g, '');
   if (window.rcmail && (rcmail.env.task == 'help'))
     tab = 'a.button-' + rcmail.env.task;
-  if (window.rcmail && (rcmail.env.action == 'plugin.sticky_notes'))
+  if (window.rcmail && (rcmail.env.action == 'plugin.sticky_notes' || rcmail.env.action == 'plugin.calendar'))
     tab = 'a.button-' + rcmail.env.action.replace(/.*\./g, '');
 
   $(tab).addClass('tablink-selected');
