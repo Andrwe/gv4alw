@@ -9,20 +9,21 @@
 
 #partheader
 {
-  top: 45px;
-  left: 240px;
-  color: #FFFFFF;
-  z-index: 250;
+  top: 40px;
+  left: 20px;
 }
 
-#partheader table td
+#partheader #closelink
 {
-  color: #FFFFFF;
+  width: 200px;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
-#partheader table td.title
+#messagepartcontainer
 {
-  color: #FFFFFF;
+  top: 60px;
 }
 
 #messagetoolbar

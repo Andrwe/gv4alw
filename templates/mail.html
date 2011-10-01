@@ -30,7 +30,7 @@
   <ul id="mailboxlistgw">
     <li id="rcmliID" class="home even"><roundcube:object name="username" /></li>
   </ul>
-    <roundcube:object name="mailboxlist" id="mailboxlist" maxlength="40" />
+    <roundcube:object name="mailboxlist" id="mailboxlist" folder_filter="mail" />
 </div>
 <div class="boxfooter">
   <roundcube:button name="mailboxmenulink" id="mailboxmenulink" type="link" title="folderactions" class="button groupactions" onclick="rcmail_ui.show_popup('mailboxmenu');return false" content=" " />
@@ -43,27 +43,14 @@
 </div>
 
 <script type="text/javascript">
-  var mailviewsplitv = new rcube_splitter({id:'mailviewsplitterv', p1: 'mailleftcontainer', p2: 'mailrightcontainer', orientation: 'v', relative: true, start: 165});
+  var mailviewsplitv = new rcube_splitter({id:'mailviewsplitterv', p1: 'mailleftcontainer', p2: 'mailrightcontainer', orientation: 'v', relative: true, start: 165, callback: rcube_render_mailboxlist });
   rcmail.add_onload('mailviewsplitv.init()');
 </script>
 </div>
 <div id="mailrightcontainer">
 <div id="mailrightcontent">
 <div id="mailcontframe">
-<div id="messagetoolbar">
-<roundcube:button command="checkmail" type="link" class="button checkmail" classAct="button checkmail" classSel="button checkmailSel" title="checkmail" content=" " />
-<roundcube:button command="compose" type="link" class="button compose" classAct="button compose" classSel="button composeSel" title="writenewmessage" content=" " />
-<roundcube:button command="reply" type="link" class="buttonPas reply" classAct="button reply" classSel="button replySel" title="replytomessage" content=" " />
-<span class="dropbutton">
-<roundcube:button command="reply-all" type="link" class="buttonPas replyAll" classAct="button replyAll" classSel="button replyAllSel" title="replytoallmessage" content=" " />
-<span id="replyallmenulink" onclick="rcmail_ui.show_popup('replyallmenu');return false"></span></span>
-<roundcube:button command="forward" type="link" class="buttonPas forward" classAct="button forward" classSel="button forwardSel" title="forwardmessage" content=" " />
-<roundcube:button command="delete" type="link" class="buttonPas delete" classAct="button delete" classSel="button deleteSel" title="deletemessage" content=" " />
-<roundcube:container name="toolbar" id="messagetoolbar" />
-<roundcube:button name="markmenulink" id="markmenulink" type="link" class="button markmessage" title="markmessages" onclick="rcmail_ui.show_popup('markmenu');return false" content=" " />
-<roundcube:button name="messagemenulink" id="messagemenulink" type="link" class="button messagemenu" title="messageactions" onclick="rcmail_ui.show_popup('messagemenu');return false" content=" " />
-</div>
-
+<roundcube:include file="/includes/messagetoolbar.html" />
 <!--						columns="attachment,flag,subject,from,date,size" -->
 <div id="messagelistcontainer" class="boxlistcontent" style="top:30px">
 <roundcube:object name="messages"
@@ -94,11 +81,11 @@
     <roundcube:endif />
     </div>
     <div id="countcontrols" class="pagenav">
-        <roundcube:button command="lastpage" type="link" class="buttonPas lastpage" classAct="button lastpage" classSel="button lastpageSel" title="lastmessages" content=" " />
-        <roundcube:button command="nextpage" type="link" class="buttonPas nextpage" classAct="button nextpage" classSel="button nextpageSel" title="nextmessages" content=" " />
+        <roundcube:button command="lastpage" type="link" class="buttonPas lastpage" classAct="button lastpage" classSel="button lastpageSel" title="lastpage" content=" " />
+        <roundcube:button command="nextpage" type="link" class="buttonPas nextpage" classAct="button nextpage" classSel="button nextpageSel" title="nextpage" content=" " />
         <roundcube:object name="messageCountDisplay" style="padding:0 .5em; float:right" />
-        <roundcube:button command="previouspage" type="link" class="buttonPas prevpage" classAct="button prevpage" classSel="button prevpageSel" title="previousmessages" content=" " />
-        <roundcube:button command="firstpage" type="link" class="buttonPas firstpage" classAct="button firstpage" classSel="button firstpageSel" title="firstmessages" content=" " />
+        <roundcube:button command="previouspage" type="link" class="buttonPas prevpage" classAct="button prevpage" classSel="button prevpageSel" title="previouspage" content=" " />
+        <roundcube:button command="firstpage" type="link" class="buttonPas firstpage" classAct="button firstpage" classSel="button firstpageSel" title="firstpage" content=" " />
     </div>
 </div>
 </div>
@@ -117,19 +104,6 @@
 </div>
 </div>
 </div>
-
-<div id="markmessagemenu" class="popupmenu">
-  <ul class="toolbarmenu">
-    <li><roundcube:button command="mark" prop="read" label="markread" classAct="readlink active" class="readlink" /></li>
-    <li><roundcube:button command="mark" prop="unread" label="markunread" classAct="unreadlink active" class="unreadlink" /></li>
-    <li><roundcube:button command="mark" prop="flagged" label="markflagged" classAct="flaggedlink active" class="flaggedlink" /></li>
-    <li><roundcube:button command="mark" prop="unflagged" label="markunflagged" classAct="unflaggedlink active" class="unflaggedlink" /></li>
-    <roundcube:container name="markmenu" id="markmessagemenu" />
-  </ul>
-</div>
-
-<roundcube:include file="/includes/replyallmenu.html" />
-<roundcube:include file="/includes/messagemenu.html" />
 
 <div id="searchmenu" class="popupmenu">
   <ul class="toolbarmenu">

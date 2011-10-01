@@ -39,16 +39,16 @@
 <div id="identity-title" class="boxtitle"><roundcube:object name="steptitle" /></div>
 <div class="boxcontent">
   <div id="identity-body">
-  <roundcube:object name="identityform" size="40" textareacols="70" textarearows="6" />
+  <roundcube:object name="identityform" id="identity-form" size="40" textareacols="70" textarearows="6" />
   </div>
-  <p>
+  <div id="identity-buttons">
     <roundcube:button command="delete" type="input" class="button" label="delete" condition="env:action=='edit-identity'" style="margin-right:0.5em" />
     <roundcube:button command="save" type="input" class="button mainaction" label="save" />
-  </p>
+  </div>
 </div>
 </div>
 </div>
-<script type="text/javascript">rcube_init_tabs('identity-details')</script>
+<script type="text/javascript">rcube_init_tabs('identity-form')</script>
 
 </body>
 </html>

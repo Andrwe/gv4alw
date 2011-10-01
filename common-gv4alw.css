@@ -329,7 +329,21 @@ table.records-table thead tr td
 div#folder-body
 {
   position: relative;
-  top: 42px;
+  top: 15px;
+}
+
+div#identity-details div.tabsbar
+{
+  top: 38px;
+}
+
+#contact-buttons,
+#folder-buttons,
+#identity-buttons
+{
+  padding-bottom: 5px;
+  position: relative;
+  top: 25px;
 }
 
 fieldset.tabbed
