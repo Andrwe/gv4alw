@@ -13,7 +13,7 @@ function rcube_init_settings_tabs()
     tab = '#settingstab' + (rcmail.env.action=='preferences' ? 'default' : (rcmail.env.action.indexOf('identity')>0 ? 'identities' : rcmail.env.action.replace(/\./g, '')));
 
   $(tab).addClass('tablink-selected');
-  $(tab + '> a').removeAttr('onclick').unbind('click').bind('click', function(){return false;});
+  $(tab + '> a').removeAttr('onclick').click(function() { return false; });
 }
 
 function rcube_show_advanced(visible)
@@ -25,9 +25,8 @@ function rcube_show_advanced(visible)
 // Warning: don't place "caller" <script> inside page element (id)
 function rcube_init_tabs(id, current)
 {
-  var content = document.getElementById(id),
-    // get fieldsets of the higher-level (skip nested fieldsets)
-    fs = $('fieldset', content).not('fieldset > fieldset');
+  var content = $('#'+id),
+    fs = content.children('fieldset');
 
   if (!fs.length)
     return;
@@ -38,13 +37,11 @@ function rcube_init_tabs(id, current)
   fs.each(function(idx) { if (idx != current) $(this).hide(); });
 
   // create tabs container
-  var tabs = $('<div>').addClass('tabsbar').appendTo($(content));
+  var tabs = $('<div>').addClass('tabsbar').appendTo(content);
 
   // convert fildsets into tabs
   fs.each(function(idx) {
-    var tab, a, elm = $(this),
-      // get first legend element
-      legend = $(elm).children('legend');
+    var tab, a, elm = $(this), legend = elm.children('legend');
 
     // create a tab
     a   = $('<a>').text(legend.text()).attr('href', '#');
@@ -66,8 +63,7 @@ function rcube_init_tabs(id, current)
 
 function rcube_show_tab(id, index)
 {
-  var content = document.getElementById(id),
-    fs = $('fieldset', content).not('fieldset > fieldset');
+  var fs = $('#'+id).children('fieldset');
 
   fs.each(function(idx) {
     // Show/hide fieldset (tab content)
@@ -86,15 +82,17 @@ function rcube_mail_ui()
   this.popups = {
     markmenu:       {id:'markmessagemenu'},
     replyallmenu:   {id:'replyallmenu'},
+    forwardmenu:    {id:'forwardmenu', editable:1},
     searchmenu:     {id:'searchmenu', editable:1},
     messagemenu:    {id:'messagemenu'},
     listmenu:       {id:'listmenu', editable:1},
     dragmessagemenu:{id:'dragmessagemenu', sticky:1},
     groupmenu:      {id:'groupoptionsmenu', above:1},
     mailboxmenu:    {id:'mailboxoptionsmenu', above:1},
-    composemenu:    {id:'composeoptionsmenu', editable:1},
+    composemenu:    {id:'composeoptionsmenu', editable:1, overlap:1},
     // toggle: #1486823, #1486930
-    uploadmenu:     {id:'attachment-form', editable:1, above:1, toggle:!bw.ie&&!bw.linux }
+    uploadmenu:     {id:'attachment-form', editable:1, above:1, toggle:!bw.ie&&!bw.linux },
+    uploadform:     {id:'upload-form', editable:1, toggle:!bw.ie&&!bw.linux }
   };
 
   var obj;
@@ -131,20 +129,35 @@ show_popupmenu: function(popup, show)
 
   if (show && ref) {
     var parent = $(ref).parent(),
+      win = $(window),
       pos = parent.hasClass('dropbutton') ? parent.offset() : $(ref).offset();
 
-    if (!above && pos.top + ref.offsetHeight + obj.height() > window.innerHeight)
+    if (!above && pos.top + ref.offsetHeight + obj.height() > win.height())
       above = true;
+    if (pos.left + obj.width() > win.width())
+      pos.left = win.width() - obj.width() - 30;
 
     obj.css({ left:pos.left, top:(pos.top + (above ? -obj.height() : ref.offsetHeight)) });
   }
 
   obj[show?'show':'hide']();
+  
+  if (bw.ie6 && this.popups[popup].overlap) {
+    $('select').css('visibility', show?'hidden':'inherit');
+    $('select', obj).css('visibility', 'inherit');
+  }
 },
 
 dragmessagemenu: function(show)
 {
   this.popups.dragmessagemenu.obj[show?'show':'hide']();
+},
+
+forwardmenu: function(show)
+{
+  $("input[name='forwardtype'][value="+(rcmail.env.forward_attachment ? 1 : 0)+"]", this.popups.forwardmenu.obj)
+    .prop('checked', true);
+  this.show_popupmenu('forwardmenu', show);
 },
 
 uploadmenu: function(show)
@@ -175,12 +188,28 @@ searchmenu: function(show)
   if (show && ref) {
     var pos = $(ref).offset();
     obj.css({ left:pos.left, top:(pos.top + ref.offsetHeight + 2)})
-        .find(':checked').attr('checked', false);
+        .find(':checked').prop('checked', false);
 
     if (rcmail.env.search_mods) {
-      var search_mods = rcmail.env.search_mods[rcmail.env.mailbox] ? rcmail.env.search_mods[rcmail.env.mailbox] : rcmail.env.search_mods['*'];
-      for (var n in search_mods)
-        $('#s_mod_' + n).attr('checked', true);
+      var n, mbox = rcmail.env.mailbox, mods = rcmail.env.search_mods;
+
+      if (rcmail.env.task != 'addressbook') {
+        mods = mods[mbox] ? mods[mbox] : mods['*'];
+
+        for (n in mods)
+          $('#s_mod_' + n).prop('checked', true);
+      }
+      else {
+        if (mods['*'])
+          $('input:checkbox[name="s_mods[]"]').map(function() {
+            this.checked = true;
+            this.disabled = this.value != '*';
+          });
+        else {
+          for (n in mods)
+            $('#s_mod_' + n).prop('checked', true);
+        }
+      }
     }
   }
   obj[show?'show':'hide']();
@@ -188,16 +217,46 @@ searchmenu: function(show)
 
 set_searchmod: function(elem)
 {
-  if (!rcmail.env.search_mods)
-    rcmail.env.search_mods = {};
+  var task = rcmail.env.task,
+    mods = rcmail.env.search_mods,
+    mbox = rcmail.env.mailbox;
 
-  if (!rcmail.env.search_mods[rcmail.env.mailbox])
-    rcmail.env.search_mods[rcmail.env.mailbox] = rcube_clone_object(rcmail.env.search_mods['*']);
+  if (!mods)
+    mods = {};
 
-  if (!elem.checked)
-    delete(rcmail.env.search_mods[rcmail.env.mailbox][elem.value]);
-  else
-    rcmail.env.search_mods[rcmail.env.mailbox][elem.value] = elem.value;
+  if (task == 'mail') {
+    if (!mods[mbox])
+      mods[mbox] = rcube_clone_object(mods['*']);
+    if (!elem.checked)
+      delete(mods[mbox][elem.value]);
+    else
+      mods[mbox][elem.value] = 1;
+  }
+  else { //addressbook
+    if (!elem.checked)
+      delete(mods[elem.value]);
+    else
+      mods[elem.value] = 1;
+
+    // mark all fields
+    if (elem.value == '*') {
+      $('input:checkbox[name="s_mods[]"]').map(function() {
+        if (this == elem)
+          return;
+
+        if (elem.checked) {
+          mods[this.value] = 1;
+          this.checked = true;
+          this.disabled = true;
+        }
+        else {
+          this.disabled = false;
+        }
+      });
+    }
+  }
+
+  rcmail.env.search_mods = mods;
 },
 
 listmenu: function(show)
@@ -218,21 +277,20 @@ listmenu: function(show)
 
     obj.css({ left:pos.left, top:(pos.top + ref.offsetHeight + 2)});
     // set form values
-    $('input[name="sort_col"][value="'+rcmail.env.sort_col+'"]').attr('checked', 1);
-    $('input[name="sort_ord"][value="DESC"]').attr('checked', rcmail.env.sort_order=='DESC' ? 1 : 0);
-    $('input[name="sort_ord"][value="ASC"]').attr('checked', rcmail.env.sort_order=='DESC' ? 0 : 1);
-    $('input[name="view"][value="thread"]').attr('checked', rcmail.env.threading ? 1 : 0);
-    $('input[name="view"][value="list"]').attr('checked', rcmail.env.threading ? 0 : 1);
+    $('input[name="sort_col"][value="'+rcmail.env.sort_col+'"]').prop('checked', true);
+    $('input[name="sort_ord"][value="DESC"]').prop('checked', rcmail.env.sort_order == 'DESC');
+    $('input[name="sort_ord"][value="ASC"]').prop('checked', rcmail.env.sort_order != 'DESC');
+    $('input[name="view"][value="thread"]').prop('checked', rcmail.env.threading ? true : false);
+    $('input[name="view"][value="list"]').prop('checked', rcmail.env.threading ? false : true);
     // list columns
-    var cols = $('input[name="list_col[]"]');
+    var found, cols = $('input[name="list_col[]"]');
     for (var i=0; i<cols.length; i++) {
-      var found = 0;
       if (cols[i].value != 'from')
         found = jQuery.inArray(cols[i].value, rcmail.env.coltypes) != -1;
       else
         found = (jQuery.inArray('from', rcmail.env.coltypes) != -1
-	    || jQuery.inArray('to', rcmail.env.coltypes) != -1);
-      $(cols[i]).attr('checked',found ? 1 : 0);
+	        || jQuery.inArray('to', rcmail.env.coltypes) != -1);
+      $(cols[i]).prop('checked', found);
     }
   }
 
@@ -282,7 +340,7 @@ body_mouseup: function(evt, p)
       && (!this.popups[i].editable || !this.target_overlaps(target, this.popups[i].id))
       && (!this.popups[i].sticky || !rcube_mouse_is_over(evt, rcube_find_object(this.popups[i].id)))
     ) {
-      window.setTimeout('$("#'+this.popups[i].id+'").hide()', 50);
+      window.setTimeout('rcmail_ui.show_popup("'+i+'",false);', 50);
     }
   }
 },
@@ -347,7 +405,8 @@ switch_preview_pane: function(elem)
     rcmail.env.contentframe = null;
     rcmail.show_contentframe(false);
   }
-  rcmail.http_post('save-pref', '_name=preview_pane&_value='+(elem.checked?1:0));
+
+  rcmail.command('save-pref', {name: 'preview_pane', value: (elem.checked?1:0)});
 },
 
 /* Message composing */
@@ -497,8 +556,19 @@ function rcube_init_mail_ui()
     rcmail.addEventListener('aftertoggle-editor', 'resize_compose_body_ev', rcmail_ui);
     rcmail.gui_object('message_dragmenu', 'dragmessagemenu');
 
+    if (rcmail.gui_objects.mailboxlist) {
+      rcmail.addEventListener('responseaftermark', rcube_render_mailboxlist);
+      rcmail.addEventListener('responseaftergetunread', rcube_render_mailboxlist);
+      rcmail.addEventListener('responseaftercheck-recent', rcube_render_mailboxlist);
+      rcmail.addEventListener('aftercollapse-folder', rcube_render_mailboxlist);
+      rcube_render_mailboxlist();
+    }
+
     if (rcmail.env.action == 'compose')
       rcmail_ui.init_compose_form();
+  }
+  else if (rcmail.env.task == 'addressbook') {
+    rcmail.addEventListener('afterupload-photo', function(){ rcmail_ui.show_popup('uploadform', false); });
   }
 }
 
@@ -510,3 +580,64 @@ function iframe_events()
   rcube_event.add_listener({ element: doc, object:rcmail_ui, method:'body_mouseup', event:'mouseup' });
 }
 
+// Abbreviate mailbox names to fit width of the container
+function rcube_render_mailboxlist()
+{
+  if (bw.ie6)  // doesn't work well on IE6
+    return;
+
+  $('#mailboxlist > li a, #mailboxlist ul:visible > li a').each(function(){
+    var elem = $(this);
+    var text = elem.data('text');
+    if (!text) {
+      text = elem.text().replace(/\s+\(.+$/, '');
+      elem.data('text', text);
+    }
+    if (text.length < 6)
+      return;
+
+    var abbrev = fit_string_to_size(text, elem, elem.width() - elem.children('span.unreadcount').width());
+    if (abbrev != text)
+      elem.attr('title', text);
+    elem.contents().filter(function(){ return (this.nodeType == 3); }).get(0).data = abbrev;
+  });
+}
+
+// inspired by https://gist.github.com/24261/7fdb113f1e26111bd78c0c6fe515f6c0bf418af5
+function fit_string_to_size(str, elem, len)
+{
+    var result = str;
+    var ellip = '...';
+    var span = $('<b>').css({ visibility:'hidden', padding:'0px' }).appendTo(elem).get(0);
+
+    // on first run, check if string fits into the length already.
+    span.innerHTML = result;
+    if (span.offsetWidth > len) {
+        var cut = Math.max(1, Math.floor(str.length * ((span.offsetWidth - len) / span.offsetWidth) / 2)),
+          mid = Math.floor(str.length / 2);
+        var offLeft = mid, offRight = mid;
+        while (true) {
+            offLeft = mid - cut;
+            offRight = mid + cut;
+            span.innerHTML = str.substring(0,offLeft) + ellip + str.substring(offRight);
+
+            // break loop if string fits size
+            if (span.offsetWidth <= len || offLeft < 3)
+              break;
+
+            cut++;
+        }
+
+        // build resulting string
+        result = str.substring(0,offLeft) + ellip + str.substring(offRight);
+    }
+    
+    span.parentNode.removeChild(span);
+    return result;
+}
+
+// Optional parameters used by TinyMCE
+var rcmail_editor_settings = {
+  skin : "default", // "default", "o2k7"
+  skin_variant : "" // "", "silver", "black"
+};

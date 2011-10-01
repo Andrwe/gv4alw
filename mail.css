@@ -4,8 +4,8 @@
 #messagetoolbar
 {
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 47px;
+  left: 205px;
   right: 10px;
   height: 35px;
   min-width: 650px;
@@ -154,21 +154,6 @@
   padding-left: 2px;
 }
 
-#searchmenu
-{
-  width: 160px;
-}
-
-#searchmenu ul.toolbarmenu
-{
-  margin: 0;
-}
-
-#searchmenu ul.toolbarmenu li
-{
-  margin: 1px 4px 1px;
-}
-
 #messagemenu li a.active:hover,
 #markmessagemenu li a.active:hover
 {
@@ -236,7 +221,7 @@
 {
   white-space: nowrap;
   position: absolute;
-  right: 190px;
+  right: 198px;
   vertical-align: middle;
 }
 
@@ -312,12 +297,14 @@
   bottom: 0px;
   width: 100%;
   height: 100%;
+  min-height: 100%; /* Chrome 14 bug */
 }
 
 #messagepartframe
 {
   width: 100%;
   height: 100%;
+  min-height: 100%; /* Chrome 14 bug */
   border: 1px solid #999999;
   background-color: #F9F9F9;
 }
@@ -645,7 +632,7 @@ body.messagelist
 #messagelist thead tr td.sortedASC,
 #messagelist thead tr td.sortedDESC
 {
-  background-position: 0 -22px;
+  background-position: 0 -26px;
 }
 
 #messagelist thead tr td.sortedASC a
@@ -699,7 +686,6 @@ body.messagelist
   cursor: inherit;
 }
 
-#messagelist td span,
 #messagelist td img
 {
   vertical-align: middle;
@@ -717,6 +703,7 @@ body.messagelist
 #messagelist tr td.status span,
 #messagelist tr td.attachment span
 {
+  display: block;
   width: 15px;
 }
 
@@ -726,6 +713,7 @@ body.messagelist
 #messagelist tr td.attachment span.attachment,
 #messagelist tr td.attachment span.report,
 #messagelist tr td.flag span.flagged,
+#messagelist tr td.flag span.unflagged,
 #messagelist tr td.flag span.unflagged:hover,
 #messagelist tr td.status span.status,
 #messagelist tr td.status span.msgicon,
@@ -739,6 +727,7 @@ body.messagelist
 #messagelist tr td.subject span.forwarded,
 #messagelist tr td.subject span.unreadchildren
 {
+  display: inline-block;
   vertical-align: middle;
   height: 17px;
   width: 15px;
@@ -788,6 +777,7 @@ body.messagelist
 }
 
 #messagelist tr td.status span.msgicon,
+#messagelist tr td.flag span.unflagged,
 #messagelist tr td.status span.unreadchildren
 {
   background-position: 0 17px; /* no icon */
@@ -837,8 +827,7 @@ body.messagelist
 #messagelist tbody tr td.subject a
 {
   cursor: default;
-  display: inline-block;
-  vertical-align: middle;
+  vertical-align: middle; /* #1487091 */
 }
 
 /* thread parent message with unread children */
@@ -1044,6 +1033,11 @@ table.headers-table tr td.header
 table.headers-table tr td.subject
 {
   font-weight: bold;
+}
+
+table.headers-table tr td.header span
+{
+  white-space: nowrap;
 }
 
 #attachment-list
@@ -1345,20 +1339,6 @@ input.from_address
 #compose-followupto
 {
   display: none;
-}
-
-.formlinks a,
-.formlinks a:visited
-{
-  color: #999999;
-  font-size: 11px;
-  text-decoration: none;
-}
-
-.formlinks a,
-.formlinks a:visited
-{
-  color: #CC0000;
 }
 
 #compose-editorfooter

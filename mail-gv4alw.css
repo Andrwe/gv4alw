@@ -31,6 +31,9 @@
   padding: 4px;
   height: 22px;
   background-color: #F6F6F6;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 #messagetoolbar a.button,

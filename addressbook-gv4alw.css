@@ -64,6 +64,7 @@
   top: 60px;
   right: 10px;
   left: 220px;
+  bottom: 10px;
 }
 
 #directorylistbox
@@ -71,6 +72,7 @@
   top: 60px;
   left: 10px;
   width: 200px;
+  bottom: 10px;
 }
 
 #directorylist li
@@ -88,5 +90,31 @@
 #directorylist li.selected
 {
   background-color: #B2B4BF;
+}
+
+#contact-frame
+{
+  overflow: hidden;
+}
+
+#contact-details
+{
+  top: 23px;
+  position: absolute;
+  height: 91%;
+  width: 98.6%;
+  overflow: auto;
+}
+
+#contacttabs
+{
+  padding-bottom: 0;
+}
+
+#contact-buttons
+{
+  padding-bottom: 5px;
+  position: relative;
+  top: 25px;
 }
 

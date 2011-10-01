@@ -55,7 +55,7 @@ img
 
 .pagenav
 {
-  width: 200px;
+  width: 250px;
 }
 
 .pagenav a.button,
@@ -105,6 +105,11 @@ ul.toolbarmenu li.separator_below
   width: auto;
 }
 
+#directorylist li
+{
+  background-image: url(images/icons/folders.gif);
+}
+
 .boxlistcontent
 {
   top: 21px;
@@ -116,7 +121,7 @@ ul.toolbarmenu li.separator_below
   height: expression((parseInt(this.parentNode.offsetHeight)-23-parseInt(this.style.top?this.style.top:21))+'px');
 }
 
-#directorylistbox, #folder-manager
+#folder-manager
 {
   height: expression((parseInt(document.documentElement.clientHeight)-105)+'px');
 }
@@ -143,6 +148,11 @@ ul.toolbarmenu li.separator_below
   background-image: url(images/messageicons.gif);
 }
 
+#messagelist tr td div.collapsed,
+#messagelist tr td div.expanded {
+	background-color: #fff;
+}
+
 body.iframe .boxtitle
 {
   position: absolute;
@@ -151,4 +161,9 @@ body.iframe .boxtitle
 #subscription-table
 {
   width: auto;
+}
+
+#sourcename
+{
+  zoom: 1;
 }

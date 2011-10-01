@@ -9,14 +9,21 @@
 
 <div id="contact-title" class="boxtitle"><roundcube:label name="contactproperties" /></div>
 <div id="contact-details" class="boxcontent">
-  <div id="contact-body">
-  <roundcube:object name="contactdetails" />
+  <roundcube:if condition="strlen(env:sourcename)" />
+    <div id="sourcename"><roundcube:label name="addressbook" />: <roundcube:var name="env:sourcename" /></div>
+  <roundcube:endif />
+
+  <div id="contactphoto"><roundcube:object name="contactphoto" id="contactpic" placeholder="/images/contactpic.png" /></div>
+  <roundcube:object name="contacthead" id="contacthead" />
+  <div style="clear:both"></div>
+  <div id="contacttabs">
+    <roundcube:object name="contactdetails" />
   </div>
-  <p>
+  <div id="contact-buttons">
     <roundcube:button command="edit" type="input" class="button" label="editcontact" condition="!ENV:readonly" />
-  </p>
+  </div>
 </div>
-<script type="text/javascript">rcube_init_tabs('contact-details')</script>
+<script type="text/javascript">rcube_init_tabs('contacttabs')</script>
 
 </body>
 </html>

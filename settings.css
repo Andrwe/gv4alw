@@ -39,6 +39,12 @@
   color: #666;
 }
 
+#subscription-table tr.root td
+{
+  font-size: 10%;
+  height: 5px;
+}
+
 #subscription-table tr.selected td
 {
   color: #FFFFFF;
@@ -121,6 +127,7 @@ body.iframe,
 {
   background-color: #F2F2F2;
   border: none;
+  min-height: 100%; /* Chrome 14 bug */
 }
 
 #formfooter
