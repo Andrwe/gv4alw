@@ -2,7 +2,7 @@
 <link rel="shortcut icon" href="/images/favicon.ico"/>
 <link rel="stylesheet" type="text/css" href="/common.css" />
 <link rel="stylesheet" type="text/css" href="/common-gv4alw.css" />
-<roundcube:if condition="env:task != 'login' && env:task != 'dummy'" />
+<roundcube:if condition="in_array(env:task, array('mail', 'addressbook', 'settings'))" />
 <link rel="stylesheet" type="text/css" href="/<roundcube:var name="env:task" />.css" />
 <link rel="stylesheet" type="text/css" href="/<roundcube:var name="env:task" />-gv4alw.css" />
 <roundcube:endif />
