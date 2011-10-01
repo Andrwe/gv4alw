@@ -31,32 +31,40 @@
 }
 
 #abooktoolbar a.delete {
-  background-position: -52px 0;
+  background-position: -50px 0;
 }
 
 #abooktoolbar a.deleteSel {
-  background-position: -52px -22px;
+  background-position: -50px -22px;
 }
 
 #abooktoolbar a.import {
-  background-position: -80px 0;
+  background-position: -76px 0;
 }
 
 #abooktoolbar a.importSel {
-  background-position: -80px -22px;
+  background-position: -76px -22px;
 }
 
 #abooktoolbar a.export {
-  background-position: -104px 0;
+  background-position: -100px 0;
 }
 
 #abooktoolbar a.exportSel {
-  background-position: -104px -22px;
+  background-position: -100px -22px;
+}
+
+#abooktoolbar a.search {
+  background-position: -133px 0;
+}
+
+#abooktoolbar a.searchSel {
+  background-position: -133px -22px;
 }
 
 #abooktoolbar span.separator {
   width: 10px;
-  background-position: -135px 0;
+  background-position: -124px 0;
 }
 
 #addressscreen

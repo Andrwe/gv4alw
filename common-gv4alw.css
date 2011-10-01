@@ -326,7 +326,6 @@ table.records-table thead tr td
 
 /*** identities, folders & contacts styles ***/
 
-div#contact-body,
 div#folder-body
 {
   position: relative;
@@ -337,11 +336,19 @@ fieldset.tabbed
 {
   margin-top: 0;
   padding-top: 0;
+  top: 22px;
+  position: relative;
 }
 
 fieldset
 {
   margin: 0;
+}
+
+div#contact-details #advsearchform div.tabsbar
+{
+  border: none;
+  top: 15px;
 }
 
 div#contact-details div.tabsbar,
