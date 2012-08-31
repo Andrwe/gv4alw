@@ -13,7 +13,8 @@
 /*  border: 1px solid #cccccc; */
 }
 
-#messagetoolbar a
+#messagetoolbar a,
+#messagetoolbar select
 {
   display: block;
   float: left;
@@ -35,6 +36,17 @@
 
 #messagetoolbar a.buttonPas {
   opacity: 0.35;
+}
+
+#messagetoolbar a.button.selected {
+  background-color: #ddd;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-top: -1px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
 }
 
 #messagetoolbar a.checkmailSel {
@@ -141,7 +153,7 @@
 {
   position: relative;
   margin: 0 8px;
-  top: 6px;
+  top: 7px;
 }
 
 #messagetoolbar select.mboxlist option
@@ -192,7 +204,8 @@
   background-position: 7px -71px;
 }
 
-#markmessagemenu li a
+#markmessagemenu li a,
+#compose-attachments li a
 {
   background: url(images/messageicons.png) no-repeat;
 }
@@ -286,6 +299,7 @@
   bottom: 0px;
   border: 1px solid #999999;
   background-color: #F9F9F9;
+  overflow: hidden;
 }
 
 #messagecontframe
@@ -435,6 +449,7 @@
   padding-top: 2px;
   padding-bottom: 2px;
   text-decoration: none;
+  height: 15px;
 }
 
 #mailboxlist li.unread
@@ -445,6 +460,11 @@
 #mailboxlist li.virtual > a
 {
   color: #666;
+}
+
+#mailboxlist li.recent > a
+{
+  color: #0066FF;
 }
 
 #mailboxlist li.selected,
@@ -482,8 +502,8 @@
 {
   position: relative;
   white-space: nowrap;
-  left: 4px;
   line-height: 22px;
+  padding: 0 4px;
   width: auto;
   min-width: 300px;
 }
@@ -496,9 +516,9 @@
   font-size: 11px;
 }
 
-#listcontrols input
+#listcontrols span input
 {
-  margin-top: 6px;
+  vertical-align: middle;
 }
 
 #listcontrols a.button,
@@ -590,7 +610,6 @@
   position: absolute;
   top: 4px;
   right: 4px;
-  min-width: 25em;
   white-space: nowrap;
   font-size: 11px;
 }
@@ -662,6 +681,7 @@ body.messagelist
 #messagelist thead tr td.subject
 {
   padding-left: 18px;
+  width: 99%;
 }
 
 #messagelist tbody tr td
@@ -701,7 +721,8 @@ body.messagelist
 
 #messagelist tr td.flag span,
 #messagelist tr td.status span,
-#messagelist tr td.attachment span
+#messagelist tr td.attachment span,
+#messagelist tr td.priority span
 {
   display: block;
   width: 15px;
@@ -712,6 +733,12 @@ body.messagelist
 #messagelist tr td.threads div.listmenu,
 #messagelist tr td.attachment span.attachment,
 #messagelist tr td.attachment span.report,
+#messagelist tr td.priority span.priority,
+#messagelist tr td.priority span.prio1,
+#messagelist tr td.priority span.prio2,
+#messagelist tr td.priority span.prio3,
+#messagelist tr td.priority span.prio4,
+#messagelist tr td.priority span.prio5,
 #messagelist tr td.flag span.flagged,
 #messagelist tr td.flag span.unflagged,
 #messagelist tr td.flag span.unflagged:hover,
@@ -742,6 +769,36 @@ body.messagelist
 #messagelist tr td.attachment span.report
 {
   background-position: 0 -255px;
+}
+
+#messagelist tr td.priority span.priority
+{
+  background-position: 0 -309px;
+}
+
+#messagelist tr td.priority span.prio5
+{
+  background-position: 0 -358px;
+}
+
+#messagelist tr td.priority span.prio4
+{
+  background-position: 0 -340px;
+}
+
+#messagelist tr td.priority span.prio3
+{
+  background-position: 0 -324px;
+}
+
+#messagelist tr td.priority span.prio2
+{
+  background-position: 0 -309px;
+}
+
+#messagelist tr td.priority span.prio1
+{
+  background-position: 0 -290px;
 }
 
 #messagelist tr td.flag span.flagged
@@ -839,7 +896,8 @@ body.messagelist
 #messagelist tr td.attachment,
 #messagelist tr td.threads,
 #messagelist tr td.status,
-#messagelist tr td.flag
+#messagelist tr td.flag,
+#messagelist tr td.priority
 {
   width: 17px;
   padding: 0 0 0 2px;
@@ -852,6 +910,7 @@ body.messagelist
   padding: 0 2px;
 }
 
+#messagelist tr td.fromto,
 #messagelist tr td.from,
 #messagelist tr td.to,
 #messagelist tr td.cc,
@@ -871,13 +930,6 @@ body.messagelist
 {
   background-color: #FFF;
 }
-
-/*
-#messagelist tr.odd
-{
-  background-color: #F9F9F9;
-}
-*/
 
 #messagelist tr.unread
 {
@@ -1122,6 +1174,7 @@ div.message-part div.pre
   margin: 0px;
   padding: 0px;
   font-family: monospace;
+  font-size: 12px;
   white-space: -moz-pre-wrap !important;
   white-space: pre-wrap !important;
   white-space: pre;
@@ -1138,7 +1191,7 @@ div.message-part blockquote
   border-left: 2px solid blue;
   border-right: 2px solid blue;
   background-color: #F6F6F6;
-  margin: 2px 0px 2px 0px;
+  margin: 2px 0px;
   padding: 1px 8px 1px 10px;
 }
 
@@ -1166,21 +1219,28 @@ div.message-htmlpart div.rcmBody
   margin: 8px;
 }
 
-#remote-objects-message
+#messagebody span.part-notice
 {
-  display: none;
+  display: block;
+}
+
+#message-objects div,
+#messagebody span.part-notice
+{
   margin: 8px;
   min-height: 20px;
   padding: 10px 10px 6px 46px;
 }
 
-#remote-objects-message a
+#message-objects div a,
+#messagebody span.part-notice a
 {
   color: #666666;
   padding-left: 10px;
 }
 
-#remote-objects-message a:hover
+#message-objects div a:hover,
+#messagebody span.part-notice a:hover
 {
   color: #333333;
 }
@@ -1228,13 +1288,13 @@ div.hide-headers
 
 #headers-source
 {
-  margin: 0 0 2px 0;
+  margin: 2px 0;
   padding: 0.5em;
   height: 145px;
   background: white;
   overflow: auto;
   font-size: 11px;
-  border: 1px solid #999999;
+  border: 1px solid #CCC;
   display: none;
   text-align: left;
   color: #333;
@@ -1286,6 +1346,21 @@ div.hide-headers
   font-family: monospace;
   border: 1px solid #999;
   resize: none;
+}
+
+#compose-body_tbl
+{
+  border: 1px solid #999;
+}
+
+#compose-body_tbl td
+{
+  border: none;
+}
+
+#compose-body_tbl tr.mceFirst td.mceToolbar
+{
+  border-bottom: 1px solid #ccc;
 }
 
 #compose-headers
@@ -1398,9 +1473,29 @@ input.from_address
   -o-text-overflow: ellipsis;
 }
 
-#compose-attachments ul li img
+#compose-attachments li a
 {
-  padding-right: 2px;
+  text-indent: -5000px;
+  width: 17px;
+  height: 16px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+#compose-attachments li img
+{
+  vertical-align: middle;
+}
+
+#compose-attachments li a.delete,
+#compose-attachments li a.cancelupload
+{
+  background-position: 0px -392px;
+}
+
+#compose-attachments li span
+{
+  line-height: 18px;
   vertical-align: middle;
 }
 

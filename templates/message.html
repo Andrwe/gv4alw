@@ -20,6 +20,7 @@
 <div id="mainscreen">
 <div id="mailleftcontainer">
 <div id="mailboxlist-container">
+<div id="mailboxlist-title" class="boxtitle"><roundcube:label name="mailboxlist" /></div>
 <div class="boxlistcontent">
   <ul id="mailboxlistgw">
     <li id="rcmliID" class="home even"><roundcube:object name="username" /></li>
@@ -30,22 +31,15 @@
   <roundcube:button name="mailboxmenulink" id="mailboxmenulink" type="link" title="folderactions" class="button groupactions" onclick="rcmail_ui.show_popup('mailboxmenu');return false" content=" " />
 </div>
 </div>
-<script type="text/javascript">
-    var mailviewsplitv = new rcube_splitter({id:'mailviewsplitterv', p1: 'mailboxlist-container', p2: 'messageframe', orientation: 'v', relative: true, start: 165});
-    rcmail.add_onload('mailviewsplitv.init()');
-</script>
 </div>
-
 
 <div id="messageframe">
 <roundcube:include file="/includes/messagetoolbar.html" />
-
 <div class="boxlistcontent" style="top:0; overflow-x:auto">
 <roundcube:object name="messageHeaders" class="headers-table" cellspacing="0" cellpadding="2" addicon="/images/icons/silhouette.png" summary="Message headers" />
 <roundcube:object name="messageFullHeaders" id="full-headers" />
 <roundcube:object name="messageAttachments" id="attachment-list" />
-
-<roundcube:object name="blockedObjects" id="remote-objects-message" />
+<roundcube:object name="messageObjects" id="message-objects" />
 <roundcube:object name="messageBody" id="messagebody" />
 </div>
 <div class="boxfooter">
@@ -60,6 +54,11 @@
 </div>
 
 </div>
+
+<script type="text/javascript">
+    var mailviewsplitv = new rcube_splitter({id:'mailviewsplitterv', p1: 'mailboxlist-container', p2: 'messageframe', orientation: 'v', relative: true, start: 165});
+    rcmail.add_onload('mailviewsplitv.init()');
+</script>
 
 <div id="mailboxoptionsmenu" class="popupmenu">
   <ul>

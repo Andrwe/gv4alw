@@ -3,7 +3,9 @@
 <head>
 <title><roundcube:object name="productname" /> :: <roundcube:label name="compose" /></title>
 <roundcube:include file="/includes/links.html" />
+<roundcube:if condition="config:enable_spellcheck" />
 <link rel="stylesheet" type="text/css" href="/googiespell.css" />
+<roundcube:endif />
 <script type="text/javascript" src="/functions.js"></script>
 <script type="text/javascript" src="/splitter.js"></script>
 <style type="text/css">
@@ -25,7 +27,7 @@
 <div id="compose-attachments">
 <div class="boxtitle"><roundcube:label name="attachments" /></div>
 <div class="boxlistcontent">
-    <roundcube:object name="composeAttachmentList" deleteIcon="/images/icons/delete.png" cancelIcon="/images/icons/delete.png" loadingIcon="/images/display/loading_blue.gif" />
+    <roundcube:object name="composeAttachmentList" id="attachmentslist" loadingIcon="/images/display/loading_blue.gif" />
 </div>
 <div class="boxfooter">
   <roundcube:button name="uploadmenulink" id="uploadmenulink" type="link" title="addattachment" class="button addgroup" onclick="rcmail_ui.show_popup('uploadmenu', true);return false" content=" " />
@@ -42,7 +44,12 @@
         <div id="messagetoolbar">
             <roundcube:button command="list" type="link" class="button back" classAct="button back" classSel="button backSel" title="backtolist" content=" " />
             <roundcube:button command="send" type="link" class="buttonPas send" classAct="button send" classSel="button sendSel" title="sendmessage" content=" " />
-            <roundcube:button command="spellcheck" type="link" class="buttonPas spellcheck" classAct="button spellcheck" classSel="button spellcheckSel" title="checkspelling" content=" " />
+            <roundcube:if condition="config:enable_spellcheck" />
+                <span class="dropbutton">
+                    <roundcube:button command="spellcheck" type="link" class="buttonPas spellcheck" classAct="button spellcheck" classSel="button spellcheckSel" title="checkspelling" content=" " />
+                    <span id="spellmenulink" onclick="rcmail_ui.show_popup('spellmenu');return false"></span>
+                </span>
+						<roundcube:endif />
             <roundcube:button name="addattachment" type="link" class="button attach" classAct="button attach" classSel="button attachSel" title="addattachment" onclick="rcmail_ui.show_popup('uploadmenu', true);return false" content=" " />
             <roundcube:button command="insert-sig" type="link" class="buttonPas insertsig" classAct="button insertsig" classSel="button insertsigSel" title="insertsignature" content=" " />
             <roundcube:button command="savedraft" type="link" class="buttonPas savedraft" classAct="button savedraft" classSel="button savedraftSel" title="savemessage" content=" " />
@@ -111,11 +118,12 @@
                 <roundcube:button type="input" command="list" class="button" label="cancel" tabindex="11" />
             </div>
             <div id="compose-editorfooter">
-                <span id="spellcheck-control" style="margin-right:10px"></span>
+                <roundcube:if condition="!in_array('htmleditor', (array)config:dont_override)" />
                 <span>
                     <label><roundcube:label name="editortype" /></label>
                     <roundcube:object name="editorSelector" editorid="compose-body" tabindex="12" />
                 </span>
+                <roundcube:endif />
             </div>
         </div>
     </div>
@@ -140,6 +148,8 @@
     </tr>
     </table>
 </div>
+
+<div id="spellmenu" class="popupmenu selectable"></div>
 
 </form>
 

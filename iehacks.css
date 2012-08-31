@@ -38,7 +38,7 @@ body.iframe #prefs-details
   filter: alpha(opacity=35);
 }
 
-#message
+body > #message
 {
   filter: alpha(opacity=85);
 }
@@ -148,6 +148,16 @@ body.iframe div.messageheaderbox
 #compose-div
 {
   height: expression((parseInt(this.parentNode.offsetHeight)-1-parseInt(document.getElementById('compose-headers').offsetHeight))+'px');
+}
+
+#compose-attachments ul li
+{
+  width: 1000px; /* for IE7 */
+}
+
+#compose-attachments li a
+{
+  float: left; /* for IE7 */
 }
 
 #messagelist

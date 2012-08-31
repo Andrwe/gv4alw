@@ -26,19 +26,22 @@
 <div id="mainscreen">
 <div id="mailleftcontainer">
 <div id="mailboxlist-container">
-<div class="boxlistcontent">
+<div id="mailboxlist-title" class="boxtitle"><roundcube:label name="mailboxlist" /></div>
+<div id="mailboxlist-content"  class="boxlistcontent">
   <ul id="mailboxlistgw">
     <li id="rcmliID" class="home even"><roundcube:object name="username" /></li>
   </ul>
-    <roundcube:object name="mailboxlist" id="mailboxlist" folder_filter="mail" />
+  <roundcube:object name="mailboxlist" id="mailboxlist" folder_filter="mail" />
 </div>
-<div class="boxfooter">
+<div id="mailboxlist-footer" class="boxfooter">
   <roundcube:button name="mailboxmenulink" id="mailboxmenulink" type="link" title="folderactions" class="button groupactions" onclick="rcmail_ui.show_popup('mailboxmenu');return false" content=" " />
-  <roundcube:if condition="env:quota" />
-    <span id="quota">
-      <roundcube:object name="quotaDisplay" display="image" id="quotadisplay" />
-    </span>
-  <roundcube:endif />
+
+<roundcube:if condition="env:quota" />
+<img id="quotaimg" src="/images/quota.<roundcube:exp expression="browser:ie && browser:ver < 7 ? 'gif' : 'png'" />" alt="" width="102" height="16" />
+<div id="quota">
+  <roundcube:object name="quotaDisplay" display="image" id="quotadisplay" />
+</div>
+<roundcube:endif />
 </div>
 </div>
 
@@ -46,7 +49,9 @@
   var mailviewsplitv = new rcube_splitter({id:'mailviewsplitterv', p1: 'mailleftcontainer', p2: 'mailrightcontainer', orientation: 'v', relative: true, start: 165, callback: rcube_render_mailboxlist });
   rcmail.add_onload('mailviewsplitv.init()');
 </script>
+
 </div>
+
 <div id="mailrightcontainer">
 <div id="mailrightcontent">
 <div id="mailcontframe">
@@ -54,11 +59,11 @@
 <!--						columns="attachment,flag,subject,from,date,size" -->
 <div id="messagelistcontainer" class="boxlistcontent" style="top:30px">
 <roundcube:object name="messages"
-	  id="messagelist"
-	  cellspacing="0"
-	  columns=""
-	  summary="Message list"
-	  optionsmenuIcon="true" />
+  id="messagelist"
+  cellspacing="0"
+  columns=""
+  summary="Message list"
+  optionsmenuIcon="true" />
 </div>
 <div class="boxfooter">
     <div id="listcontrols" class="pagenav">
@@ -76,8 +81,9 @@
         <roundcube:button command="collapse-all" type="link" title="collapse-all" class="buttonPas collapse-all" classAct="button collapse-all" classSel="button collapse-allsel" content=" " />
     <roundcube:endif />
     <roundcube:if condition="!in_array('preview_pane', (array)config:dont_override)" />
-        <label><span style="margin-left: 12px"><roundcube:label name="previewpane" />:&nbsp;</span>
-        <input type="checkbox" onclick="rcmail_ui.switch_preview_pane(this)"<roundcube:exp expression="config:preview_pane == true ? ' checked=checked' : ''" /> /></label>
+        <span style="margin-left: 12px"><label for="prevpaneswitch"><roundcube:label name="previewpane" />:</label>
+            <input type="checkbox" id="prevpaneswitch" onclick="rcmail_ui.switch_preview_pane(this)"<roundcube:exp expression="config:preview_pane == true ? ' checked=checked' : ''" /> />
+        </span>
     <roundcube:endif />
     </div>
     <div id="countcontrols" class="pagenav">
@@ -89,6 +95,7 @@
     </div>
 </div>
 </div>
+
 <script type="text/javascript">
   var mailviewsplit = new rcube_splitter({id:'mailviewsplitter', p1: 'mailcontframe', p2: 'mailpreviewframe', orientation: 'h', relative: true, start: 205});
 <roundcube:if condition="config:preview_pane == true" />
@@ -99,9 +106,8 @@
 <div id="mailpreviewframe"<roundcube:if condition="config:preview_pane != true" /> style="display:none"<roundcube:endif />>
 <roundcube:object name="messagecontentframe" id="messagecontframe" width="100%" height="100%" frameborder="0" src="" />
 </div>
-
-
 </div>
+
 </div>
 </div>
 
@@ -118,6 +124,7 @@
 
 <div id="quicksearchbar">
 <div id="searchfilter">
+  <label for="rcmlistfilter"><roundcube:label name="filter" /></label>:
   <roundcube:object name="searchfilter" class="searchfilter" />
 </div>
 <roundcube:button name="searchmenulink" id="searchmenulink" image="/images/icons/glass_roll.png" onclick="rcmail_ui.show_popup('searchmenu');return false" title="searchmod" />
@@ -155,7 +162,9 @@
   <ul class="toolbarmenu">
     <li><input type="checkbox" name="list_col[]" value="threads" id="cols_threads" checked="checked" disabled="disabled" /><label for="cols_threads" class="disabled"><roundcube:label name="threads" /></label></li>
     <li><input type="checkbox" name="list_col[]" value="subject" id="cols_subject" checked="checked" disabled="disabled" /><label for="cols_subject" class="disabled"><roundcube:label name="subject" /></label></li>
-    <li><input type="checkbox" name="list_col[]" value="from" id="cols_fromto" /><label for="cols_fromto"><roundcube:label name="fromto" /></label></li>
+    <li><input type="checkbox" name="list_col[]" value="fromto" id="cols_fromto" /><label for="cols_fromto"><roundcube:label name="fromto" /></label></li>
+    <li><input type="checkbox" name="list_col[]" value="from" id="cols_from" /><label for="cols_from"><roundcube:label name="from" /></label></li>
+    <li><input type="checkbox" name="list_col[]" value="to" id="cols_to" /><label for="cols_to"><roundcube:label name="to" /></label></li>
     <li><input type="checkbox" name="list_col[]" value="replyto" id="cols_replyto" /><label for="cols_replyto"><roundcube:label name="replyto" /></label></li>
     <li><input type="checkbox" name="list_col[]" value="cc" id="cols_cc" /><label for="cols_cc"><roundcube:label name="cc" /></label></li>
     <li><input type="checkbox" name="list_col[]" value="date" id="cols_date" /><label for="cols_date"><roundcube:label name="date" /></label></li>
@@ -163,6 +172,7 @@
     <li><input type="checkbox" name="list_col[]" value="status" id="cols_status" /><label for="cols_status"><roundcube:label name="readstatus" /></label></li>
     <li><input type="checkbox" name="list_col[]" value="attachment" id="cols_attachment" /><label for="cols_attachment"><roundcube:label name="attachment" /></label></li>
     <li><input type="checkbox" name="list_col[]" value="flag" id="cols_flag" /><label for="cols_flag"><roundcube:label name="flag" /></label></li>
+    <li><input type="checkbox" name="list_col[]" value="priority" id="cols_priority" /><label for="cols_priority"><roundcube:label name="priority" /></label></li>
   </ul>
 </fieldset>
 <roundcube:endif />
@@ -173,7 +183,9 @@
     <li><input type="radio" name="sort_col" value="arrival" id="sort_arrival" /><label for="sort_arrival"><roundcube:label name="arrival" /></label></li>
     <li><input type="radio" name="sort_col" value="date" id="sort_date" /><label for="sort_date"><roundcube:label name="sentdate" /></label></li>
     <li><input type="radio" name="sort_col" value="subject" id="sort_subject" /><label for="sort_subject"><roundcube:label name="subject" /></label></li>
-    <li><input type="radio" name="sort_col" value="from" id="sort_fromto" /><label for="sort_fromto"><roundcube:label name="fromto" /></label></li>
+    <li><input type="radio" name="sort_col" value="fromto" id="sort_fromto" /><label for="sort_fromto"><roundcube:label name="fromto" /></label></li>
+    <li><input type="radio" name="sort_col" value="from" id="sort_from" /><label for="sort_from"><roundcube:label name="from" /></label></li>
+    <li><input type="radio" name="sort_col" value="to" id="sort_to" /><label for="sort_to"><roundcube:label name="to" /></label></li>
     <li><input type="radio" name="sort_col" value="to" id="sort_replyto" /><label for="sort_replyto"><roundcube:label name="replyto" /></label></li>
     <li><input type="radio" name="sort_col" value="cc" id="sort_cc" /><label for="sort_cc"><roundcube:label name="cc" /></label></li>
     <li><input type="radio" name="sort_col" value="size" id="sort_size" /><label for="sort_size"><roundcube:label name="size" /></label></li>

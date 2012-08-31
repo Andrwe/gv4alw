@@ -67,23 +67,16 @@
   padding-right: 12px;
 }
 
-#identity-frame
-{
-  position: relative;
-  margin-top: 20px;
-  border: 1px solid #999999;
-}
-
-#identity-details,
 #folder-box,
-#prefs-box
+#prefs-box,
+#identity-box
 {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   border: 1px solid #999999;
-  overflow: auto;
+  overflow: hidden;
   background-color: #F2F2F2;
 }
 
@@ -92,11 +85,6 @@
 {
   font-weight: bold;
   text-align: right;
-}
-
-input.disabled
-{
-  color: #999999;
 }
 
 #bottomboxes
@@ -123,11 +111,20 @@ input.disabled
 
 body.iframe,
 #prefs-frame,
-#folder-frame
+#folder-frame,
+#identity-frame
 {
   background-color: #F2F2F2;
   border: none;
   min-height: 100%; /* Chrome 14 bug */
+}
+
+#prefs-title,
+#folder-title,
+#identity-title
+{
+  /* fixes issue where tabs were overlapping box title when scrolling */
+  z-index: 10;
 }
 
 #formfooter
@@ -137,14 +134,14 @@ body.iframe,
 
 #formfooter .footerleft
 {
-  padding-left: 15px;
+  padding: 0 2px 10px;
   white-space: nowrap;
   float: left;
 }
 
 #formfooter .footerright
 {
-  padding-right: 15px;
+  padding: 0 2px 10px;
   white-space: nowrap;
   text-align: right;
   float: right;
@@ -169,4 +166,50 @@ body.iframe,
 #rcmfd_signature
 {
   font-family: monospace;
+}
+
+div.readtext
+{
+  width: 42em;
+  padding: 20px;
+}
+
+#license
+{
+  min-height: 200px;
+  padding-bottom: 2em;
+  background: url(images/watermark.gif) no-repeat center;
+}
+
+#license .sysname
+{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#license .copyright
+{
+  font-weight: bold;
+}
+
+#license .license,
+#license .links
+{
+  margin-top: 1.5em;
+}
+
+#pluginlist
+{
+  border: 1px solid #999;
+  width: 100%;
+}
+
+#pluginlist td.version
+{
+  text-align: center;
+}
+
+div.crop
+{
+  overflow: auto;
 }

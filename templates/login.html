@@ -16,11 +16,20 @@
 <div class="boxcontent">
 
 <form name="form" action="./" method="post">
-<roundcube:object name="loginform" form="form" autocomplete="on" />
+<roundcube:object name="loginform" form="form" />
 
-<p class="login-button"><input type="submit" class="button mainaction" value="<roundcube:label name='login' />" /></p>
+<p style="text-align:center;"><input type="submit" class="button mainaction" value="<roundcube:label name='login' />" /></p>
 
 </form>
+</div>
+</div>
+
+<div id="login-bottomline">
+  <roundcube:var name="config:product_name"> <roundcube:object name="version" condition="config:display_version" />
+  <roundcube:if condition="config:support_url" />
+    &nbsp;&#9679;&nbsp; <a href="<roundcube:var name='config:support_url' />" target="_blank" class="support-link"><roundcube:label name="support" /></a>
+  <roundcube:endif />
+  <roundcube:container name="loginfooter" id="bottomline" />
 </div>
 
 <roundcube:object name="preloader" images="
@@ -31,13 +40,9 @@
     /images/pagenav.gif
     /images/mail_toolbar.png
     /images/searchfield.gif
-    /images/icons/glass_roll.png
+    /images/messageicons.png
     /images/icons/reset.gif
-    /images/icons/attachment.png
-    /images/icons/dot.png
-    /images/icons/unread.png  
     /images/abook_toolbar.png
-    /images/icons/glass.png
     /images/icons/groupactions.png
     /images/watermark.gif
 " />

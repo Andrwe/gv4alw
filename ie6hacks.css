@@ -7,7 +7,7 @@
 
 img
 {
-  behavior: url(skins/default/pngbehavior.htc);
+  behavior: url(skins/classic/pngbehavior.htc);
 }
 
 #logo
@@ -16,11 +16,14 @@ img
   height: 47px;
 }
 
-#message div.notice,
-#message div.error,
-#message div.warning,
-#message div.confirmation,
-#remote-objects-message
+body > #message div.notice,
+body > #message div.error,
+body > #message div.warning,
+body > #message div.confirmation,
+#message-objects div.notice,
+#message-objects div.error,
+#message-objects div.warning,
+#message-objects div.confirmation
 {
   background-image: url(images/display/icons.gif);
 }
@@ -131,6 +134,12 @@ ul.toolbarmenu li.separator_below
 #messagelist tr td.threads div.listmenu,
 #messagelist tr td.attachment span.attachment,
 #messagelist tr td.attachment span.report,
+#messagelist tr td.priority span.priority,
+#messagelist tr td.priority span.prio1,
+#messagelist tr td.priority span.prio2,
+#messagelist tr td.priority span.prio3,
+#messagelist tr td.priority span.prio4,
+#messagelist tr td.priority span.prio5,
 #messagelist tr td.flag span.flagged,
 #messagelist tr td.flag span.unflagged:hover,
 #messagelist tr td.status span.status,

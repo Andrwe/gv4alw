@@ -2,9 +2,11 @@
 
 body
 {
+  font-family: "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
   margin: 8px;
   background-color: #F6F6F6;
-  color: #000000;
+  color: #000;
+  font-size: 12px;
 }
 
 body.iframe
@@ -18,10 +20,10 @@ body.extwin
   margin: 10px;
 }
 
-body, td, th, div, p, h3, select, input, textarea
+td, th, div, p, select, input, textarea
 {
-  font-family: "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
   font-size: 12px;
+  font-family: inherit;
 }
 
 th
@@ -36,13 +38,13 @@ h3
 
 a, a:active, a:visited
 {
-  color: #000000;
+  color: #000;
   outline: none;
 }
 
 a.button, a.button:visited, a.tab, a.tab:visited, a.axislist
 {
-  color: #000000;
+  color: #000;
   text-decoration: none;
 }
 
@@ -56,7 +58,7 @@ a.tab
 hr
 {
   height: 1px;
-  background-color: #666666;
+  background-color: #666;
   border-style: none;
 }
 
@@ -65,9 +67,9 @@ input[type="button"],
 input[type="password"],
 textarea
 {
-  border: 1px solid #666666;
-  color: #333333;
-  background-color: #ffffff;
+  border: 1px solid #666;
+  color: #333;
+  background-color: #FFF;
 }
 
 input, textarea
@@ -77,7 +79,9 @@ input, textarea
 }
 
 input.placeholder,
-textarea.placeholder
+textarea.placeholder,
+input:-moz-placeholder,
+textarea:-moz-placeholder
 {
   color: #aaa;
 }
@@ -152,14 +156,10 @@ img
   left: 20px;
 }
 
-#header
+body > #logo
 {
-  position: absolute;
-  top: 8px;
-  left: 19px;
-  width: 170px;
-  height: 40px;
-  z-index: 100;
+  margin-left: 12px;
+  cursor: pointer;
 }
 
 #taskbar
@@ -168,7 +168,7 @@ img
   top: 0px;
   right: 0px;
   height: 24px;
-  width: 100%;
+  left: 250px;
   background: url(images/taskbar.png) top right no-repeat;
   padding: 10px 6px 5px 0px;
   text-align: right;
@@ -210,7 +210,7 @@ img
   background-position: 0 -75px;
 }
 
-#message
+body > #message
 {
   position: absolute;
   display: none;
@@ -221,7 +221,7 @@ img
   opacity: 0.85;
 }
 
-#message div
+body > #message div
 {
   width: 400px;
   margin: 0px;
@@ -229,37 +229,42 @@ img
   padding: 8px 10px 8px 46px;
 }
 
-#message div.notice,
-#remote-objects-message
+body > #message div.notice,
+body > #messagebody .part-notice,
+#message-objects div.notice
 {
   background: url(images/display/icons.png) 6px 3px no-repeat;
   background-color: #F7FDCB;
   border: 1px solid #C2D071;
 }
 
-#message div.error,
-#message div.warning
+body > #message div.error,
+body > #message div.warning,
+#message-objects div.warning,
+#message-objects div.error
 {
   background: url(images/display/icons.png) 6px -97px no-repeat;
   background-color: #EF9398;
   border: 1px solid #DC5757;
 }
 
-#message div.confirmation
+body > #message div.confirmation,
+#message-objects div.confirmation
 {
   background: url(images/display/icons.png) 6px -47px no-repeat;
   background-color: #A6EF7B;
   border: 1px solid #76C83F;
 }
 
-#message div.loading
+body > #message div.loading,
+#message-objects div.loading
 {
   background: url(images/display/loading.gif) 6px 3px no-repeat;
   background-color: #EBEBEB;
   border: 1px solid #CCCCCC;
 }
 
-#message a
+body > #message a
 {
   cursor: pointer;
   text-decoration: underline;
@@ -279,6 +284,9 @@ img
   font-size: 11px;
   font-weight: bold;
   overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  white-space: nowrap;
   background: url(images/listheader.gif) top left repeat-x #CCC;
 }
 
@@ -362,14 +370,13 @@ body.iframe .boxtitle
   background-position: 0 -26px;
 }
 
+.boxfooter a.delgroup {
+  background-position: 0 -49px;
+}
+
 .boxfooter a.buttonPas
 {
   opacity: 0.35;
-}
-
-.pagenav
-{
-  min-width: 250px;
 }
 
 .pagenav span
@@ -389,6 +396,7 @@ body.iframe .boxtitle
   height: 11px;
   padding: 0;
   margin: 1px;
+  margin-top: 2px;
   overflow: hidden;
   background: url(images/pagenav.gif) 0 0 no-repeat transparent;
   opacity: 0.99; /* this is needed to make buttons appear correctly in Chrome */
@@ -488,6 +496,7 @@ body.iframe .boxtitle
   padding: 2px 10px;
   text-decoration: none;
   min-height: 14px;
+  background: transparent;
 }
 
 .popupmenu li a.active,
@@ -497,7 +506,8 @@ body.iframe .boxtitle
   color: #333;
 }
 
-.popupmenu li a.active:hover
+.popupmenu li a.active:hover,
+.popupmenu.selectable li a.selected:hover
 {
   color: #fff;
   background-color: #c00;
@@ -506,6 +516,16 @@ body.iframe .boxtitle
 .popupmenu li.block input
 {
   float: left;
+}
+
+.popupmenu.selectable li a.selected
+{
+  background: url(images/messageicons.png) 2px -372px no-repeat;
+}
+
+.popupmenu.selectable li a
+{
+  padding-left: 20px;
 }
 
 .darkbg
@@ -537,6 +557,11 @@ body.iframe .boxtitle
   background-position: -74px 0;
 }
 
+img.uploading
+{
+  width: 16px;
+  height: 16px;
+}
 
 /***** common table settings ******/
 
@@ -591,7 +616,7 @@ table.records-table tr.unfocused td
 {
   position: absolute;
   top: 55px;
-  right: 30px;
+  right: 10px;
   width: 190px;
   height: 20px;
   text-align: right;
@@ -738,9 +763,18 @@ a.rcmContactAddress:hover
   margin: auto;
 }
 
-#rcmloginuser, #rcmloginpwd, #rcmloginhost
+#login-form table td.input input
 {
   width: 200px;
+}
+
+#login-bottomline
+{
+	width: 400px;
+	margin: 5em auto;
+	font-size: 85%;
+	text-align: center;
+	color: #333;
 }
 
 #console
@@ -748,7 +782,8 @@ a.rcmContactAddress:hover
   opacity: 0.8;
 }
 
-.disabled
+.disabled,
+a.disabled
 {
   color: #999;
 }

@@ -11,7 +11,7 @@
 	<roundcube:exp expression="browser:ie ? ('width:expression((parseInt(this.parentNode.offsetWidth)-'.(!empty(cookie:addressviewsplitter) ? cookie:addressviewsplitter+5 : 255).')+\\'px\\');') : ''" />
 #directorylistbox { width: <roundcube:exp expression="!empty(cookie:addressviewsplitterd) ? cookie:addressviewsplitterd-5 : 195" />px; }
 #addressscreen { left: <roundcube:exp expression="!empty(cookie:addressviewsplitterd) ? cookie:addressviewsplitterd+5 : 205" />px;
-       <roundcube:exp expression="browser:ie ? ('width:expression((parseInt(this.parentNode.offsetWidth)-'.(!empty(cookie:addressviewsplitterd) ? cookie:addressviewsplitterd+5 : 205).')+\\'px\\');') : ''" />
+	<roundcube:exp expression="browser:ie ? ('width:expression((parseInt(this.parentNode.offsetWidth)-'.(!empty(cookie:addressviewsplitterd) ? cookie:addressviewsplitterd+5 : 205).')+\\'px\\');') : ''" />
 }
 </style>
 
@@ -20,6 +20,7 @@
 
 <roundcube:include file="/includes/taskbar.html" />
 <roundcube:include file="/includes/header.html" />
+
 <div id="abooktoolbar">
 <roundcube:button command="add" type="link" class="buttonPas addcontact" classAct="button addcontact" classSel="button addcontactSel" title="newcontact" content=" " />
 <roundcube:button command="compose" type="link" class="buttonPas compose" classAct="button compose" classSel="button composeSel" title="composeto" content=" " />
@@ -47,15 +48,17 @@
   </ul>
 </div>
 
+<div id="mainscreen">
+
 <div id="directorylistbox">
 <div id="directorylist-title" class="boxtitle"><roundcube:label name="groups" /></div>
-<div class="boxlistcontent">
+<div id="directorylist-content" class="boxlistcontent">
   <roundcube:object name="directorylist" id="directorylist" />
   <roundcube:object name="groupslist" id="contactgroupslist" />
 </div>
-<div class="boxfooter">
+<div id="directorylist-footer" class="boxfooter">
   <roundcube:button command="group-create" type="link" title="newcontactgroup" class="buttonPas addgroup" classAct="button addgroup" content=" " />
-  <roundcube:button name="groupmenulink" id="groupmenulink" type="link" title="groupactions" class="button groupactions" onclick="rcmail_ui.show_popup('groupmenu');return false" content=" " />
+  <roundcube:button name="groupmenulink" id="groupmenulink" type="link" title="moreactions" class="button groupactions" onclick="rcmail_ui.show_popup('groupmenu');return false" content=" " />
 </div>
 </div>
 
@@ -90,11 +93,16 @@
 </div>
 
 </div>
+</div>
 
 <div id="groupoptionsmenu" class="popupmenu">
   <ul>
     <li><roundcube:button command="group-rename" label="grouprename" classAct="active" /></li>
     <li><roundcube:button command="group-delete" label="groupdelete" classAct="active" /></li>
+    <li><roundcube:button command="group-remove-selected" label="groupremoveselected" classAct="active" /></li>
+    <li class="separator_above"><roundcube:button command="search-create" label="searchsave" classAct="active" /></li>
+    <li><roundcube:button command="search-delete" label="searchdelete" classAct="active" /></li>
+    <roundcube:container name="groupoptions" id="groupoptionsmenu" />
   </ul>
 </div>
 

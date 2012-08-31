@@ -180,6 +180,11 @@ span.tablink-selected a
   color: #4c5e75;
 }
 
+span#settingstab 
+{
+  width: auto;
+}
+
 /*** box styles ***/
 
 div.boxtitle
