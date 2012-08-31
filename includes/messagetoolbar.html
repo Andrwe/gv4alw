@@ -19,22 +19,16 @@
 <roundcube:if condition="template:name == 'mail'" />
 <roundcube:button name="markmenulink" id="markmenulink" type="link" class="button markmessage" title="markmessages" onclick="rcmail_ui.show_popup('markmenu');return false" content=" " />                                                                   
 <roundcube:endif />
-<roundcube:button name="messagemenulink" id="messagemenulink" type="link" class="button messagemenu" title="messageactions" onclick="rcmail_ui.show_popup('messagemenu');return false" content=" " />
+<roundcube:button name="messagemenulink" id="messagemenulink" type="link" class="button messagemenu" title="moreactions" onclick="rcmail_ui.show_popup('messagemenu');return false" content=" " />
 <roundcube:if condition="template:name == 'message'" />
 <roundcube:object name="mailboxlist" type="select" noSelection="moveto" maxlength="25" onchange="rcmail.command('moveto', this.options[this.selectedIndex].value)" class="mboxlist" folder_filter="mail" />
 <roundcube:endif />
 </div>
 
 <div id="forwardmenu" class="popupmenu">
-    <ul class="toolbarmenu">
-        <li class="block">
-            <input type="radio" name="forwardtype" value="0" onchange="rcmail.command('save-pref', {name: 'forward_attachment', value: 0, env: 'forward_attachment'});" />
-            <roundcube:button command="forward" label="forwardinline" prop="sub" classAct="forwardlink active" class="forwardlink" />
-        </li>
-        <li class="block">
-            <input type="radio" name="forwardtype" value="1" onchange="rcmail.command('save-pref', {name: 'forward_attachment', value: 1, env: 'forward_attachment'})" />
-            <roundcube:button command="forward-attachment" label="forwardattachment" prop="sub" classAct="forwardattachmentlink active" class="forwardattachmentlink" />
-        </li>    
+    <ul>
+        <li><roundcube:button command="forward" label="forwardinline" prop="sub" classAct="forwardlink active" class="forwardlink" /></li>
+        <li><roundcube:button command="forward-attachment" label="forwardattachment" prop="sub" classAct="forwardattachmentlink active" class="forwardattachmentlink" /></li>
         <roundcube:container name="forwardmenu" id="forwardmenu" />
     </ul>
 </div>
