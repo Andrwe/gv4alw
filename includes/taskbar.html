@@ -36,7 +36,7 @@
   <roundcube:if condition="env:task == 'settings' && env:action == ''">
     <roundcube:button command="settings" label="settings" class="button-settings tablink-selected" />
   <roundcube:else />
-    <roundcube:button command="settings" prop="" label="settings" class="button-settings" />
+    <roundcube:button command="settings" label="settings" class="button-settings" />
   <roundcube:endif />
 	</span>
 
@@ -50,7 +50,8 @@
   <roundcube:endif />
   </span>
 
-	<script type="text/javascript"> if (window.rcmail) rcmail.add_onload(rcube_init_plugin_tab); </script>
+  <!-- load javascript to set tablink-selected class && circumvent settings button not acting when already in settings action -->
+	<script type="text/javascript"> if (window.rcmail) rcmail.add_onload(rcube_init_plugin_tab); $('a.button-settings').attr('onclick', ''); </script>
 </div>
 <span id="logout">
 	<roundcube:button command="logout" label="logout" class="button-logout" />
