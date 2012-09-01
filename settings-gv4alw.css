@@ -12,6 +12,12 @@ div#identity-details div#formfooter
   top: 40px;
 }
 
+div#prefs-details div#formfooter
+{
+  position: relative;
+  top: 4px;
+}
+
 .footerleft
 {
   padding-bottom: 5px;
