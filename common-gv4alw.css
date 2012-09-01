@@ -122,8 +122,7 @@ input, textarea
   color: #B2B4BF;
 }
 
-span.tablink,
-span.tablink-selected
+span.tablink
 {
   width: 102px;
   height: 18px !important;
@@ -132,18 +131,15 @@ span.tablink-selected
   text-align: center;
   background: url(images/tab-pas.png);
   padding: 0 0 4px 0;
-  cursor: pointer;
   text-decoration: none;
 }
 
-span.tablink-selected
+span#settingstab 
 {
-  background: url(images/tab-act.png);
-  cursor: default;
+  width: auto;
 }
 
-span.tablink a,
-span.tablink-selected a
+span.tablink a
 {
   display: block;
   color: #DEE7EF;
@@ -152,7 +148,26 @@ span.tablink-selected a
   background: none;
 }
 
-span.tablink a:hover
+span a.tablink-selected
+{
+  background: url(images/tab-act.png);
+  cursor: default;
+  margin-left: 0px;
+  color: #4c5e75;
+}
+
+span#settingstab a
+{
+  display: inline-block;
+  width: 82px;
+}
+
+span#settingstab a.tablink-selected
+{
+  width: 86px;
+}
+
+span.tablink a:not(.tablink-selected):hover
 {
   position: absolute;
   top: 0px;
@@ -164,25 +179,18 @@ span.tablink a:hover
   background: url('images/tab-act.png');
 }
 
-span.tablink-selected a:hover
+span#settingstab a:not(.tablink-selected):hover
 {
-  position: absolute;
-  top: 0px;
-  padding: 4px 0 0 0;
-  height: 18px;
+  position: relative;
+  padding: 5px 0;
   width: 102px;
-  color: #4c5e75;
-  background: url('images/tab-act.png');
 }
 
-span.tablink-selected a
+span#settingstab a.tablink-selected:hover
 {
-  color: #4c5e75;
-}
-
-span#settingstab 
-{
-  width: auto;
+  position: relative;
+  height: 23px;
+  padding: 5px 10px 0 5px;
 }
 
 /*** box styles ***/
