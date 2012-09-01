@@ -1,3 +1,4 @@
+<script type="text/javascript" src="/functions-gv4alw.js"></script>
 <div id="tabsbar">
   <span id="mailtab" class="tablink">
   <roundcube:if condition="env:task == 'mail'">
@@ -40,6 +41,14 @@
 	</span>
 
   <roundcube:container name="taskbar" id="taskbar" />
+
+  <span id="settingstababout" class="tablink">
+  <roundcube:if condition="env:task == 'settings' && env:action == 'about'">
+    <roundcube:button command="about" label="about" title="about" class="button-about tablink-selected" />
+  <roundcube:else />
+    <roundcube:button command="about" label="about" title="about" class="button-about" />
+  <roundcube:endif />
+  </span>
 
 	<script type="text/javascript"> if (window.rcmail) rcmail.add_onload(rcube_init_plugin_tab); </script>
 </div>

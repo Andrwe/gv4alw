@@ -4,6 +4,7 @@
 <title><roundcube:object name="pagetitle" /></title>
 <roundcube:include file="/includes/links.html" />
 <script type="text/javascript" src="/functions.js"></script>
+<script type="text/javascript" src="/functions-gv4alw.js"></script>
 <script type="text/javascript" src="/splitter.js"></script>
 <style type="text/css">
 #identities-list { width: <roundcube:exp expression="!empty(cookie:identviewsplitter) ? cookie:identviewsplitter-5 : 295" />px; }
@@ -13,7 +14,7 @@
 </style>
 
 </head>
-<body class="iframe">
+<body class="iframe" onload="rcube_init_action_tab();">
 
 <div id="identity-title" class="boxtitle"><roundcube:object name="steptitle" /></div>
 
