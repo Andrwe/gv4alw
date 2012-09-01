@@ -1,11 +1,5 @@
 /***** Roundcube|Mail address book task styles of gv4alw *****/
 
-#mainscreen
-{
-  top: 0;
-  bottom: 7px;
-}
-
 #abooktoolbar
 {
   top: 33px;
@@ -75,7 +69,6 @@
 
 #addressscreen
 {
-  top: 60px;
   right: 10px;
   left: 220px;
   bottom: 10px;
@@ -83,7 +76,6 @@
 
 #directorylistbox
 {
-  top: 60px;
   left: 10px;
   width: 200px;
   bottom: 10px;
