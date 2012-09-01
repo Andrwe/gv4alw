@@ -19,3 +19,10 @@ function rcube_init_action_tab()
   $('span.tablink > a').removeClass('tablink-selected').attr('onmousemove', 'rcube_init_action_tab()');
   $('span.tablink-selected > a').addClass('tablink-selected');
 }
+
+function rcube_init_jquery_tab()
+{
+  $('a.tablink').removeClass('tablink-selected').attr('onmousemove', 'rcube_init_jquery_tab()');
+  $('li.ui-tabs-selected > a').addClass('tablink-selected');
+}
+

@@ -203,6 +203,7 @@ div.boxtitle
   font-size: 14px;
   color: white;
   padding-bottom: 0;
+  background: none #AABDCC;
 }
 
 div.boxlistcontent
@@ -280,6 +281,11 @@ ul.toolbarmenu li a
   background-color: #b2b4bf;
 }
 
+.boxfooter
+{
+  background: none #AABDCC;
+}
+
 /** quota indicator */
 
 #quota
@@ -336,6 +342,7 @@ table.records-table thead tr td
   font-size: 14px;
   color: white;
   vertical-align: middle;
+  background: none #AABDCC;
 }
 
 /*** identities, folders & contacts styles ***/
@@ -384,12 +391,12 @@ div#identity-details div.tabsbar
 
 div.ui-widget-header
 {
-  background: url(images/listheader.gif) top left repeat-x #CCC;
-  height: 20px;
+  height: 26px;
   padding: 2px 4px 0 !important;
   vertical-align: middle;
   font-size: 14px;
   color: white;
+  background: none #AABDCC;
 }
 
 /** fix for hardcoded img-size of markasjunk- and accounts-plugin **/
