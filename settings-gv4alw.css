@@ -1,5 +1,17 @@
 /***** Roundcube|Mail settings task styles of gv4alw *****/
 
+div#folder-details div#formfooter
+{
+  position: relative;
+  top: 19px;
+}
+
+div#identity-details div#formfooter
+{
+  position: relative;
+  top: 40px;
+}
+
 .footerleft
 {
   padding-bottom: 5px;

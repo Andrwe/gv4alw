@@ -356,22 +356,15 @@ div#identity-details textarea
   min-width: 50%;
 }
 
-#contact-buttons,
-#folder-buttons,
-#identity-buttons
-{
-  padding-bottom: 5px;
-  position: relative;
-  top: 25px;
-}
-
 fieldset.tabbed
 {
-  top: 30px;
-  left: 10px;
-  right: 10px;
+  top: 37px;
+  left: 0px;
+  right: 0px;
   bottom: 6px;
-  position: absolute;
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
 
 fieldset
@@ -379,24 +372,11 @@ fieldset
   margin: 0;
 }
 
-div#contact-details #advsearchform div.tabsbar
-{
-  border: none;
-  top: 15px;
-}
-
 div#contact-details div.tabsbar,
 div#folder-details div.tabsbar,
 div#identity-details div.tabsbar
 {
   border: none;
-}
-
-div#formfooter
-{
-  position: absolute;
-  bottom: 4px;
-  left: 15px;
 }
 
 /*** plugin styles ***/

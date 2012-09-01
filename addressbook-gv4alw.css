@@ -1,5 +1,11 @@
 /***** Roundcube|Mail address book task styles of gv4alw *****/
 
+#mainscreen
+{
+  top: 0;
+  bottom: 7px;
+}
+
 #abooktoolbar
 {
   top: 33px;
@@ -88,11 +94,24 @@
   font-size: 13px;
   background: url(images/icons/abcard.png) no-repeat;
   background-position: 2px 3px; 
+  border: 0;
+}
+
+#directorylist li:nth-child(even)
+{
+  background-color: #F9F9F9;
+}
+
+#directorylist li:hover
+{
+  border: none;
+  background-color: #B2B4BF;
 }
 
 #directorylist li a:hover
 {
   font-weight: bold;
+  color: white;
 }
 
 #directorylist li.selected
@@ -107,15 +126,32 @@
 
 #contact-details
 {
-  top: 23px;
+  top: 15px;
   position: absolute;
   height: 91%;
   width: 98.6%;
   overflow: auto;
 }
 
+div#contact-details #advsearchform div.tabsbar
+{
+  border: none;
+  top: 15px;
+}
+
+div#contact-details #advsearchform fieldset.tabbed
+{
+  top: 22px;
+}
+
 #contacttabs
 {
   padding-bottom: 0;
+}
+
+div#formfooter
+{
+  position: relative;
+  top: 25px;
 }
 

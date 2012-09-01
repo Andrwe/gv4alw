@@ -4,14 +4,17 @@
 <title><roundcube:object name="pagetitle" /></title>
 <roundcube:include file="/includes/links.html" />
 <script type="text/javascript" src="/functions.js"></script>
+<script type="text/javascript" src="/functions-gv4alw.js"></script>
 </head>
-<body class="iframe">
+<body class="iframe" onload="rcube_init_action_tab()">
 
 <div id="contact-title" class="boxtitle"><roundcube:label name="advsearch" /></div>
 <div id="contact-details" class="boxcontent">
   <roundcube:object name="searchform" id="advsearchform" size=30 />
-  <div id="contact-buttons">
-    <roundcube:button command="save" type="input" class="button mainaction" label="search" />
+  <div id="formfooter">
+    <div class="footerleft">
+      <roundcube:button command="save" type="input" class="button mainaction" label="search" />
+    </div>
   </div>
 </div>
 <script type="text/javascript">rcube_init_tabs('advsearchform')</script>
