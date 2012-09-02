@@ -26,3 +26,9 @@ function rcube_init_jquery_tab()
   $('li.ui-tabs-selected > a').addClass('tablink-selected');
 }
 
+function fix_bugs()
+{
+  /* fix missing class of archivefolder list item */
+  $('#mailboxlist li[style^="background-image:"]').attr('style', '').attr('class', 'mailbox archive');
+}
+
