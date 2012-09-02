@@ -45,6 +45,15 @@
   background: url(images/mail_toolbar.png) 0 0 no-repeat transparent;
 }
 
+#messagetoolbar a.button.junk,
+#messagetoolbar a.buttonPas.junk {
+  width: 22px;
+  height: 22px;
+  margin-right: 10px;
+  background: url(images/folder-junk.png) -20px 0 no-repeat transparent;
+  text-indent: -5000px;
+}
+
 #messagetoolbar a.buttonPas {
   opacity: 0.35;
 }
