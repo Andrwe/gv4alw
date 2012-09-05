@@ -30,5 +30,9 @@ function fix_bugs()
 {
   /* fix missing class of archivefolder list item */
   $('#mailboxlist li[style^="background-image:"]').attr('style', '').attr('class', 'mailbox archive');
+  /* fix messagetoolbar on compose which has top-value set by compose_newwindow-plugin in php-code */
+  $('#compose-headers-div #messagetoolbar').attr('style', '');
+  /* fix mainscreen which has top-value set by compose_newwindow-plugin in php-code */
+  $('#mainscreen').attr('style', '');
 }
 
